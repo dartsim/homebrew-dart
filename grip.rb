@@ -6,7 +6,7 @@ class Grip < Formula
 		:using => :git
 	url 'https://github.com/golems/grip.git',
 		:using => :git,
-		:tag => "2.3"
+		:revision => "54a8a89a73d2d44e458ca54feda7824d624dc1a1"
 	version "2.3"
 
 	depends_on 'cmake' => :build
