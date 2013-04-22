@@ -2,9 +2,9 @@ require 'formula'
 
 class Dartsim < Formula
 	homepage 'http://dart.golems.org'
-	head 'https://github.com/golems/dart.git',
+	head 'https://github.com/dartsim/dart.git',
 		:using => :git
-	url 'https://github.com/golems/dart.git',
+	url 'https://github.com/dartsim/dart.git',
 		:using => :git,
 		:revision => "f35356b37dca4de5b1615c3bf597721eed915ed1"
 	version "2.4"

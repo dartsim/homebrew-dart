@@ -2,9 +2,9 @@ require 'formula'
 
 class Grip < Formula
 	homepage 'http://dart.golems.org'
-	head 'https://github.com/golems/grip.git',
+	head 'https://github.com/dartsim/grip.git',
 		:using => :git
-	url 'https://github.com/golems/grip.git',
+	url 'https://github.com/dartsim/grip.git',
 		:using => :git,
 		:revision => "02d64ff47c6bbd73a9c03e081f018990e28f6247"
 	version "2.4"
