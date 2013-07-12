@@ -22,6 +22,9 @@ class Dartsim < Formula
 	depends_on 'tinyxml' => :build
 	depends_on 'tinyxml2' => :build
 	depends_on 'gtest' => :build
+	depends_on 'console_bridge' => :build
+	depends_on 'urdfdom_headers' => :build
+	depends_on 'urdfdom' => :build
 
 	def install
 		system "cmake", ".", *std_cmake_args
