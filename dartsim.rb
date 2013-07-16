@@ -6,8 +6,8 @@ class Dartsim < Formula
 		:using => :git
 	url 'https://github.com/dartsim/dart.git',
 		:using => :git,
-		:revision => "f35356b37dca4de5b1615c3bf597721eed915ed1"
-	version "2.4"
+		:revision => "10e69f0c3dd513635147731aeb4401f96b71f76d"
+	version "2.5"
 
 	# Standard (on homebrew)
 	depends_on 'cmake' => :build

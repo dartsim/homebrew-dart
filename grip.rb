@@ -6,8 +6,8 @@ class Grip < Formula
 		:using => :git
 	url 'https://github.com/dartsim/grip.git',
 		:using => :git,
-		:revision => "02d64ff47c6bbd73a9c03e081f018990e28f6247"
-	version "2.4"
+		:revision => "21ed8a6c3ae45196ee879f1674ae1ebc67f36d0d"
+	version "2.5"
 
 	depends_on 'cmake' => :build
 	depends_on 'dartsim' => :build
