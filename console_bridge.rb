@@ -1,6 +1,6 @@
 require 'formula'
 
-class Console_bridge < Formula
+class ConsoleBridge < Formula
 	homepage 'http://dart.golems.org'
 	head 'https://github.com/dartsim/console_bridge.git',
 		:using => :git

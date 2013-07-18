@@ -1,6 +1,6 @@
 require 'formula'
 
-class Urdfdom_headers < Formula
+class UrdfdomHeaders < Formula
 	homepage 'http://dart.golems.org'
 	head 'https://github.com/dartsim/urdfdom_headers.git',
 		:using => :git
