@@ -6,7 +6,7 @@ class Urdfdom < Formula
 		:using => :git
 	url 'https://github.com/dartsim/urdfdom.git',
 		:using => :git,
-		:revision => "a0f3f4ddcb5896829d79f9a714df78dd108ba76c"
+		:revision => "12043b648395b1ad4511269033d8ce98e7c747a5"
 	version "0.2.8"
 
 	# Standard (on homebrew)
