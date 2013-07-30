@@ -6,7 +6,7 @@ class UrdfdomHeaders < Formula
 		:using => :git
 	url 'https://github.com/dartsim/urdfdom_headers.git',
 		:using => :git,
-		:revision => "dad31c24f52dd69bb40a67aff775be530277190b"
+		:revision => "42582ebd3f21d372782e9047683dd7fae3bad89e"
 	version "0.2.3"
 
 	# Standard (on homebrew)
