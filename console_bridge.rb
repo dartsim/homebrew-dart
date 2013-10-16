@@ -1,24 +1,21 @@
 require 'formula'
 
 class ConsoleBridge < Formula
-	homepage 'http://dart.golems.org'
-	head 'https://github.com/dartsim/console_bridge.git',
-		:using => :git
-	url 'https://github.com/dartsim/console_bridge.git',
-		:using => :git,
-		:revision => "ad7f91e1fbfc6e499b72c08effa45abce862c330"
-	version "0.28"
-
-	# Standard (on homebrew)
-	depends_on 'cmake' => :build
-	depends_on 'boost' => :build
-
-	def install
-		system "cmake", ".", *std_cmake_args
-		system "make install" # if this fails, try separate make/make install steps
-	end
-
-	def test
-		system "false"
-	end
+  homepage 'http://wiki.ros.org/console_bridge'
+  url 'https://github.com/ros/console_bridge/archive/0.2.5.zip'
+  sha1 '9c86af5eed01e970c6a06fc98c01a79dc3409e95'
+  head 'https://github.com/ros/console_bridge.git', :using => :git
+  
+  # Standard (on homebrew)
+  depends_on 'cmake' => :build
+  depends_on 'boost' => :build
+  
+  def install
+    system "cmake", ".", *std_cmake_args
+    system "make install" # if this fails, try separate make/make install steps
+  end
+  
+  def test
+    system "false"
+  end
 end
