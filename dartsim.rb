@@ -18,7 +18,7 @@ class Dartsim < Formula
 	# Non-standard (install through golems)
 	depends_on 'fcl' => :build
 	depends_on 'libccd' => :build
-	depends_on 'assimp3' => :build
+	depends_on 'assimp' => :build
 	depends_on 'tinyxml' => :build
 	depends_on 'tinyxml2' => :build
 	depends_on 'gtest' => :build
