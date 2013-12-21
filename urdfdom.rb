@@ -1,28 +1,23 @@
 require 'formula'
 
 class Urdfdom < Formula
-	homepage 'http://dart.golems.org'
-	head 'https://github.com/dartsim/urdfdom.git',
-		:using => :git
-	url 'https://github.com/dartsim/urdfdom.git',
-		:using => :git,
-		:revision => "8513913d1943f55202599cd0b36cac9609e85cbb"
-	version "0.2.8"
+  homepage 'http://ros.org/wiki/urdf'
+  url 'https://github.com/ros/urdfdom/archive/0.2.10.tar.gz'
+  sha1 '79e33e91f79c4775983ffeffcf02b155af942af2'
+  head 'https://github.com/ros/urdfdom.git'
 
-	# Standard (on homebrew)
-	depends_on 'cmake' => :build
-	depends_on 'boost' => :build
+  depends_on 'cmake' => :build
+  depends_on 'urdfdom_headers' => :build
 
-    # Non-standard (install through golems)
-	depends_on 'console_bridge' => :build
-	depends_on 'urdfdom_headers' => :build
+  depends_on 'boost'
+  depends_on 'console_bridge'
 
-	def install
-		system "cmake", ".", *std_cmake_args
-		system "make install" # if this fails, try separate make/make install steps
-	end
+  def install
+    system "cmake", ".", *std_cmake_args
+    system "make install"
+  end
 
-	def test
-		system "false"
-	end
+  def test
+    system "false"
+  end
 end

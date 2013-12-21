@@ -1,24 +1,19 @@
 require 'formula'
 
 class UrdfdomHeaders < Formula
-	homepage 'http://dart.golems.org'
-	head 'https://github.com/dartsim/urdfdom_headers.git',
-		:using => :git
-	url 'https://github.com/dartsim/urdfdom_headers.git',
-		:using => :git,
-		:revision => "42582ebd3f21d372782e9047683dd7fae3bad89e"
-	version "0.2.3"
+  homepage 'http://ros.org/wiki/urdf'
+  url 'https://github.com/ros/urdfdom_headers/archive/0.2.3.tar.gz'
+  sha1 'c68e965e3e98263fb908dc26e6e7e450431b71f2'
+  head 'https://github.com/ros/urdfdom_headers.git'
 
-	# Standard (on homebrew)
-	depends_on 'cmake' => :build
-	depends_on 'boost' => :build
+  depends_on 'cmake' => :build
 
-	def install
-		system "cmake", ".", *std_cmake_args
-		system "make install" # if this fails, try separate make/make install steps
-	end
+  def install
+    system "cmake", ".", *std_cmake_args
+    system "make install"
+  end
 
-	def test
-		system "false"
-	end
+  def test
+    system "false"
+  end
 end

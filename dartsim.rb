@@ -1,37 +1,34 @@
 require 'formula'
 
 class Dartsim < Formula
-	homepage 'http://dart.golems.org'
-	head 'https://github.com/dartsim/dart.git',
-		:using => :git
-	url 'https://github.com/dartsim/dart.git',
-		:using => :git,
-		:revision => "10e69f0c3dd513635147731aeb4401f96b71f76d"
-	version "2.5"
+  homepage 'http://dartsim.github.io'
+  url 'https://github.com/dartsim/dart/archive/v3.0.tar.gz'
+  sha1 '5d541b77f52d5dfbdba98765162b58f3c5b7e927'
+  head 'https://github.com/dartsim/dart.git', :branch => 'master'
 
-	# Standard (on homebrew)
-	depends_on 'cmake' => :build
-	depends_on 'flann' => :build
-	depends_on 'boost' => :build
-	depends_on 'eigen' => :build
+  option 'core-only', 'Build dart-core only'
 
-	# Non-standard (install through golems)
-	depends_on 'fcl' => :build
-	depends_on 'libccd' => :build
-	depends_on 'assimp' => :build
-	depends_on 'tinyxml' => :build
-	depends_on 'tinyxml2' => :build
-	depends_on 'gtest' => :build
-	depends_on 'console_bridge' => :build
-	depends_on 'urdfdom_headers' => :build
-	depends_on 'urdfdom' => :build
+  depends_on 'cmake' => :build
+  depends_on 'eigen' => :build
+  depends_on 'gtest' => :build
 
-	def install
-		system "cmake", ".", *std_cmake_args
-		system "make install" # if this fails, try separate make/make install steps
-	end
+  depends_on 'assimp'
+  depends_on 'boost'
+  depends_on 'fcl'
+  depends_on 'flann' unless build.include? 'core-only'
+  depends_on 'libccd'
+  depends_on 'tinyxml' unless build.include? 'core-only'
+  depends_on 'tinyxml2' unless build.include? 'core-only'
+  depends_on 'urdfdom' unless build.include? 'core-only'
 
-	def test
-		system "false"
-	end
+  def install
+    cmake_args = std_cmake_args
+    cmake_args << "-DBUILD_CORE_ONLY=True" if build.include? 'core-only'
+    system "cmake", ".", *cmake_args
+    system "make install"
+  end
+
+  def test
+    system "false"
+  end
 end
