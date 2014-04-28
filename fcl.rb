@@ -8,7 +8,7 @@ class Fcl < Formula
 
   depends_on 'boost'
   depends_on 'cmake' => :build
-  depends_on 'libccd'
+  depends_on 'homebrew/science/libccd'
 
   def install
     system "cmake", ".", *std_cmake_args

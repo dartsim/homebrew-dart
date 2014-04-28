@@ -16,7 +16,7 @@ class Dartsim < Formula
   depends_on 'boost'
   depends_on 'fcl'
   depends_on 'flann' unless build.include? 'core-only'
-  depends_on 'libccd'
+  depends_on 'homebrew/science/libccd'
   depends_on 'tinyxml' unless build.include? 'core-only'
   depends_on 'tinyxml2' unless build.include? 'core-only'
   depends_on 'urdfdom' unless build.include? 'core-only'
