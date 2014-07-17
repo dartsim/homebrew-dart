@@ -10,7 +10,7 @@ class Dartsim < Formula
 
   depends_on 'cmake' => :build
   depends_on 'eigen' => :build
-  depends_on 'gtest' => :build
+  depends_on 'gtest' => :build unless build.include? 'core-only'
 
   depends_on 'assimp'
   depends_on 'boost'
