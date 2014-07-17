@@ -2,7 +2,7 @@ require 'formula'
 
 class Gtest < Formula
   homepage 'http://code.google.com/p/googletest/'
-  url 'http://googletest.googlecode.com/files/gtest-1.6.0.zip'
+  url 'https://googletest.googlecode.com/files/gtest-1.6.0.zip'
   sha1 '00d6be170eb9fc3b2198ffdcb1f1d6ba7fc6e621'
 
   depends_on 'cmake' => :build
