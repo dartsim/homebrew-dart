@@ -19,7 +19,7 @@ class Dartsim < Formula
   depends_on 'homebrew/science/libccd'
   depends_on 'tinyxml' unless build.include? 'core-only'
   depends_on 'tinyxml2' unless build.include? 'core-only'
-  depends_on 'urdfdom' unless build.include? 'core-only'
+  depends_on 'ros/deps/urdfdom' unless build.include? 'core-only'
 
   def install
     cmake_args = std_cmake_args
