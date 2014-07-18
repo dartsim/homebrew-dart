@@ -2,8 +2,8 @@ require 'formula'
 
 class Dartsim < Formula
   homepage 'http://dartsim.github.io'
-  url 'https://github.com/dartsim/dart/archive/v4.1.0.tar.gz'
-  sha1 '16cd6f77fb7c1ba0e166e3d219cbc8ed6964055d'
+  url 'https://github.com/dartsim/dart/archive/v4.1.1.tar.gz'
+  sha1 '7fb26a7a2e4132b64dafe8c028e1d5535a053ab1'
   head 'https://github.com/dartsim/dart.git', :branch => 'master'
 
   option 'core-only', 'Build dart-core only'
