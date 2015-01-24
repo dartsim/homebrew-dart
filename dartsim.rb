@@ -2,15 +2,14 @@ require 'formula'
 
 class Dartsim < Formula
   homepage 'http://dartsim.github.io'
-  url 'https://github.com/dartsim/dart/archive/v4.3.3.tar.gz'
-  sha1 '0eb84483a9dcb62eb54fbff82d8338e9e405b3a2'
+  url 'https://github.com/dartsim/dart/archive/v4.3.4.tar.gz'
+  sha1 'f46e436b2727fb95d7b6885705660fa86c22d1fa'
   head 'https://github.com/dartsim/dart.git', :branch => 'master'
 
   option 'core-only', 'Build dart-core only'
 
   depends_on 'cmake' => :build
   depends_on 'eigen' => :build
-  depends_on 'gtest' => :build unless build.include? 'core-only'
 
   depends_on 'assimp'
   depends_on 'boost'
