@@ -3,7 +3,6 @@ require 'formula'
 class Dartsim < Formula
   homepage 'http://dartsim.github.io'
   url 'https://github.com/dartsim/dart/archive/v4.3.4.tar.gz'
-  version "4.3.4"
   sha1 'f46e436b2727fb95d7b6885705660fa86c22d1fa'
   head 'https://github.com/dartsim/dart.git', :branch => 'master'
 
@@ -26,9 +25,5 @@ class Dartsim < Formula
     cmake_args << "-DBUILD_CORE_ONLY=True" if build.include? 'core-only'
     system "cmake", ".", *cmake_args
     system "make install"
-  end
-
-  def test
-    system "false"
   end
 end
