@@ -3,7 +3,7 @@ require 'formula'
 class Dartsim42 < Formula
   homepage 'http://dartsim.github.io'
   url 'https://github.com/dartsim/dart/archive/v4.2.2.tar.gz'
-  sha1 'f65bac70fd39a122c5f84b4269038a230f1d9fdf'
+  sha1 '3cea64600aab98f8a17c3c4dbb0f24ba3af9fcec'
   head 'https://github.com/dartsim/dart.git', :branch => 'release-4.2'
 
   option 'core-only', 'Build dart-core only'
