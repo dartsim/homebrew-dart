@@ -1,6 +1,6 @@
 require 'formula'
 
-class Dartsim < Formula
+class Dartsim42 < Formula
   homepage 'http://dartsim.github.io'
   url 'https://github.com/dartsim/dart/archive/v4.2.1.tar.gz'
   sha1 'f65bac70fd39a122c5f84b4269038a230f1d9fdf'
