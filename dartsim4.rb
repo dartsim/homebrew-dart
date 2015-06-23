@@ -5,17 +5,16 @@ class Dartsim4 < Formula
   url 'https://github.com/dartsim/dart/archive/v4.3.4.tar.gz'
   sha1 'f46e436b2727fb95d7b6885705660fa86c22d1fa'
   head 'https://github.com/dartsim/dart.git', :branch => 'release-4.3'
-
   option 'core-only', 'Build dart-core only'
 
   depends_on 'cmake' => :build
-  depends_on 'eigen' => :build
 
   depends_on 'assimp'
   depends_on 'boost'
+  depends_on 'eigen'
   depends_on 'fcl'
-  depends_on 'flann' unless build.include? 'core-only'
   depends_on 'homebrew/science/libccd'
+  depends_on 'flann' unless build.include? 'core-only'
   depends_on 'tinyxml' unless build.include? 'core-only'
   depends_on 'tinyxml2' unless build.include? 'core-only'
   depends_on 'ros/deps/urdfdom' unless build.include? 'core-only'
