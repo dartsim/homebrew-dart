@@ -19,8 +19,8 @@ class Dartsim3 < Formula
   depends_on "ros/deps/urdfdom" unless build.include? "core-only"
 
   patch do
-    url "https://gist.githubusercontent.com/jslee02/097cae2403a0bcba034d/raw/8bac3a963a94209c392122eed91f4b75f631680b/dart3_gtest.patch"
-    sha256 "c99b607380550ad8c6734581a2faac2e5c90a38bca9ff03165b37909056192f4"
+    url "https://gist.githubusercontent.com/jslee02/097cae2403a0bcba034d/raw/8654fd5f54faa36ef069b1f9579e93bd08c1a2c5/dart3_gtest.patch"
+    sha256 "CAE7F3ED33868C1F3A2D2DAD775DAACF8323DE7E5E4D7211D27839724CAD6FEA"
   end
 
   def install
