@@ -19,9 +19,15 @@ class Dartsim3 < Formula
   depends_on "ros/deps/urdfdom" unless build.include? "core-only"
   depends_on "gtest" unless build.include? "core-only"
 
+  patch do
+    url "https://gist.githubusercontent.com/jslee02/097cae2403a0bcba034d/raw/8bac3a963a94209c392122eed91f4b75f631680b/dart3_gtest.patch"
+    sha256 "35b5962f4e0b954a2d248d0d08a0f290deec146baa4d523f37727d1410f34b26"
+  end
+
   def install
     cmake_args = std_cmake_args
-    cmake_args << "-DBUILD_CORE_ONLY=True" if build.include? "core-only"
+    cmake_args << "-DBUILD_CORE_ONLY=ON" if build.include? "core-only"
+    cmake_args << "-DBUILD_UNITTESTS=OFF"
     system "cmake", ".", *cmake_args
     system "make install"
   end
