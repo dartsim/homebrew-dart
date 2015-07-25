@@ -19,8 +19,9 @@ class Dartsim3 < Formula
   depends_on "ros/deps/urdfdom" unless build.include? "core-only"
 
   patch do
-    url "https://gist.githubusercontent.com/jslee02/097cae2403a0bcba034d/raw/8654fd5f54faa36ef069b1f9579e93bd08c1a2c5/dart3_gtest.patch"
-    sha256 "7c5cd227db02bf47269e82e778bb6763ec9f2d98ff23f77b35e3bfaf4e78882c"
+    # Add cmake build option whether DART build the unit tests or not
+    url "https://gist.githubusercontent.com/jslee02/097cae2403a0bcba034d/raw/9f447abee22d80db74a566d2fe4c176f5fcd9b03/dart3_gtest.patch"
+    sha256 "87c53f452a2117627567d4329eef7e745346a67e1e49a9cfab6ec58f93b7c1f0"
   end
 
   def install
