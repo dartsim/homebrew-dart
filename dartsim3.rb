@@ -20,7 +20,7 @@ class Dartsim3 < Formula
 
   patch do
     url "https://gist.githubusercontent.com/jslee02/097cae2403a0bcba034d/raw/8654fd5f54faa36ef069b1f9579e93bd08c1a2c5/dart3_gtest.patch"
-    sha256 "CAE7F3ED33868C1F3A2D2DAD775DAACF8323DE7E5E4D7211D27839724CAD6FEA"
+    sha256 "7c5cd227db02bf47269e82e778bb6763ec9f2d98ff23f77b35e3bfaf4e78882c"
   end
 
   def install
