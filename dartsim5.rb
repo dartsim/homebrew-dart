@@ -17,6 +17,8 @@ class Dartsim5 < Formula
   depends_on "tinyxml" unless build.include? "core-only"
   depends_on "tinyxml2" unless build.include? "core-only"
   depends_on "ros/deps/urdfdom" unless build.include? "core-only"
+  depends_on "nlopt" unless build.include? "core-only" => :optional
+  depends_on "ipopt" unless build.include? "core-only" => :optional
 
   def install
     cmake_args = std_cmake_args
