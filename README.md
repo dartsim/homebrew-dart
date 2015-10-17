@@ -1,4 +1,4 @@
-Homebrew DART Formulae
+Homebrew DART Formulae [![Build Status](https://travis-ci.org/dartsim/homebrew-dart.svg)](https://travis-ci.org/dartsim/homebrew-dart)
 ======================
 GOLEMS tap for DART and GRIP.
 
