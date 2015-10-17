@@ -7,18 +7,22 @@ class Dartsim5 < Formula
   option "core-only", "Build dart-core only"
 
   depends_on "cmake" => :build
+  depends_on "pkg-config" => :build
 
   depends_on "assimp"
   depends_on "boost"
   depends_on "eigen"
   depends_on "fcl"
   depends_on "homebrew/science/libccd"
+  
+  depends_on "bullet" => [:optional, "with-shared", "with-double-precision"]
   depends_on "flann" unless build.include? "core-only"
   depends_on "tinyxml" unless build.include? "core-only"
   depends_on "tinyxml2" unless build.include? "core-only"
   depends_on "ros/deps/urdfdom" unless build.include? "core-only"
   depends_on "nlopt" unless build.include? "core-only" => :optional
   depends_on "ipopt" unless build.include? "core-only" => :optional
+  depends_on "openscenegraph" unless build.include? "core-only" => :optional
 
   def install
     cmake_args = std_cmake_args
