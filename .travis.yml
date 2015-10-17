@@ -1,0 +1,19 @@
+language: objective-c
+
+os: osx
+
+before_install:
+  - brew update > /dev/null
+
+install:
+  - mkdir -p $(brew --repo)/Library/Taps/dartsim
+  - ln -s $PWD $(brew --repo)/Library/Taps/dartsim/homebrew-dart
+  - brew tap --repair
+
+script:
+  - brew audit `ls $(brew --repo)/Library/Taps/dartsim/homebrew-dart/*.rb`
+  - brew style `ls $(brew --repo)/Library/Taps/dartsim/homebrew-dart/*.rb`
+  - brew fetch `ls $(brew --repo)/Library/Taps/dartsim/homebrew-dart/*.rb`
+
+matrix:
+  fast_finish: true
