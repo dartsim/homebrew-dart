@@ -13,7 +13,7 @@ install:
 script:
   - brew audit `ls $(brew --repo)/Library/Taps/dartsim/homebrew-dart/*.rb`
   - brew style `ls $(brew --repo)/Library/Taps/dartsim/homebrew-dart/*.rb`
-  - brew fetch `ls $(brew --repo)/Library/Taps/dartsim/homebrew-dart/*.rb`
+  - brew fetch `ls $(brew --repo)/Library/Taps/dartsim/homebrew-dart/*.rb` | grep -v '%$'
 
 matrix:
   fast_finish: true
