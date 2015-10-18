@@ -7,7 +7,7 @@ class Fcl < Formula
   head "https://github.com/flexible-collision-library/fcl.git"
 
   depends_on "boost"
-  depends_on "cmake' => :build
+  depends_on "cmake" => :build
   depends_on "pkg-config" => :build
   depends_on "homebrew/science/flann" => :optional
   depends_on "homebrew/science/libccd"
