@@ -13,7 +13,8 @@ class Dartsim3 < Formula
   depends_on "eigen"
   depends_on "fcl"
   depends_on "homebrew/science/libccd"
-  depends_on "flann" unless build.include? "core-only"
+
+  depends_on "homebrew/science/flann" unless build.include? "core-only"
   depends_on "tinyxml" unless build.include? "core-only"
   depends_on "tinyxml2" unless build.include? "core-only"
   depends_on "ros/deps/urdfdom" unless build.include? "core-only"

@@ -1,4 +1,4 @@
-Homebrew DART Formulae
+Homebrew DART Formulae [![Build Status](https://travis-ci.org/dartsim/homebrew-dart.svg?branch=master)](https://travis-ci.org/dartsim/homebrew-dart)
 ======================
 dartsim tap for DART and GRIP.
 
