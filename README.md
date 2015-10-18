@@ -1,6 +1,6 @@
 Homebrew DART Formulae
 ======================
-GOLEMS tap for DART and GRIP.
+dartsim tap for DART and GRIP.
 
 Tapping
 -------
