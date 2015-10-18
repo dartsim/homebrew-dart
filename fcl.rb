@@ -1,5 +1,3 @@
-require 'formula'
-
 class Fcl < Formula
   homepage "http://gamma.cs.unc.edu/FCL"
   url "https://github.com/flexible-collision-library/fcl/archive/0.3.2.tar.gz"
