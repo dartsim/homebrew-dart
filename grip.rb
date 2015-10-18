@@ -8,7 +8,7 @@ class Grip < Formula
   version "2.5"
 
   depends_on 'cmake' => :build
-  depends_on 'dartsim' => :build
+  depends_on 'dartsim/dart/dartsim3' => :build
   depends_on 'wxmac' => :build
 
   def install
