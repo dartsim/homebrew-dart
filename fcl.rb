@@ -3,7 +3,7 @@ require 'formula'
 class Fcl < Formula
   homepage 'http://gamma.cs.unc.edu/FCL'
   url 'https://github.com/flexible-collision-library/fcl/archive/0.3.2.tar.gz'
-  sha1 '67c4a3c9b2c9c829cae3e08a374fc6aa23f3f4b1'
+  sha256 'cf914f85b32cf8b63879907726df64e50da33f00d538759d789fe10fc5fbc95b'
   head 'https://github.com/flexible-collision-library/fcl.git'
 
   depends_on 'boost'
@@ -17,7 +17,7 @@ class Fcl < Formula
     system "make install"
   end
 
-  def test
+  test do
     system "false"
   end
 end
