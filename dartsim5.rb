@@ -1,8 +1,8 @@
 class Dartsim5 < Formula
   desc "DART: Dynamic Animation and Robotics Toolkit"
   homepage "http://dartsim.github.io"
-  url "https://github.com/dartsim/dart/archive/v5.1.0.tar.gz"
-  sha256 "8a506b2a7a9bcf76f136940e60b41cc0d607d6d27d0a1a27841d90b41c714036"
+  url "https://github.com/dartsim/dart/archive/v5.1.1.tar.gz"
+  sha256 "e186c990176d8b7dd7039c59f934555d3738bd01a9205234b9b007a0be138363"
   head "https://github.com/dartsim/dart.git", :branch => "release-5.1"
   option "core-only", "Build dart-core only"
 
