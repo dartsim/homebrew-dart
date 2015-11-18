@@ -1,6 +1,16 @@
 language: objective-c
 
-os: osx
+matrix:
+  include:
+    - env: OSX=10.11
+      os: osx
+      osx_image: osx10.11
+    - env: OSX=10.10
+      os: osx
+      osx_image: xcode7.1
+    - env: OSX=10.9
+      os: osx
+      osx_image: beta-xcode6.2
 
 before_install:
   - brew update > /dev/null
@@ -16,5 +26,3 @@ script:
   - brew fetch `ls $(brew --repo)/Library/Taps/dartsim/homebrew-dart/*.rb` | grep -v '%$'
   - brew unpack --patch `ls $(brew --repo)/Library/Taps/dartsim/homebrew-dart/*.rb`
 
-matrix:
-  fast_finish: true
