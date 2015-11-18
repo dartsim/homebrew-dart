@@ -26,5 +26,3 @@ script:
   - brew fetch `ls $(brew --repo)/Library/Taps/dartsim/homebrew-dart/*.rb` | grep -v '%$'
   - brew unpack --patch `ls $(brew --repo)/Library/Taps/dartsim/homebrew-dart/*.rb`
 
-matrix:
-  fast_finish: true
