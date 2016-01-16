@@ -1,7 +1,7 @@
 class Fcl < Formula
   homepage "http://gamma.cs.unc.edu/FCL"
-  url "https://github.com/flexible-collision-library/fcl/archive/0.3.2.tar.gz"
-  sha256 "cf914f85b32cf8b63879907726df64e50da33f00d538759d789fe10fc5fbc95b"
+  url "https://github.com/flexible-collision-library/fcl/archive/0.4.0.tar.gz"
+  sha256 "1bea2cd5ee6034166d42860a6c5577f807c81f9f54d09dd680fb9bdf58d46747"
   head "https://github.com/flexible-collision-library/fcl.git"
 
   depends_on "boost"
