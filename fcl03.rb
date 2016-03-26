@@ -1,4 +1,4 @@
-class Fcl < Formula
+class Fcl03 < Formula
   homepage "http://gamma.cs.unc.edu/FCL"
   url "https://github.com/flexible-collision-library/fcl/archive/0.3.2.tar.gz"
   version "0.3.2"
