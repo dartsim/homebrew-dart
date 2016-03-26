@@ -13,7 +13,7 @@ matrix:
       osx_image: beta-xcode6.2
 
 before_install:
-  - brew update > /dev/null
+  - brew update > /dev/null || brew update > /dev/null
 
 install:
   - mkdir -p $(brew --repo)/Library/Taps/dartsim
