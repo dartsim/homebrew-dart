@@ -2,7 +2,7 @@ class Dartsim3 < Formula
   desc "DART: Dynamic Animation and Robotics Toolkit"
   homepage "http://dartsim.github.io"
   url "https://github.com/dartsim/dart/archive/v3.0.tar.gz"
-  sha256 "8134101688efcada16a321831de9bcc6c70e6834b825a9209c3759f7f52e6815"
+  sha256 "fd9f01a14f1f5e16c7b9d3b4d4545786a238804dde4c42b143ccef36e882a556"
   head "https://github.com/dartsim/dart.git", :branch => "release-3.0"
   option "core-only", "Build dart-core only"
 
