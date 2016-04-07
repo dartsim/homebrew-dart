@@ -1,4 +1,4 @@
-class Dart-prl01 < Formula
+class Dartprl01 < Formula
   desc "DART: Dynamic Animation and Robotics Toolkit"
   homepage "http://dartsim.github.io"
   url "https://github.com/personalrobotics/dart/archive/prl-v0.1.tar.gz"
