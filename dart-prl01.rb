@@ -2,7 +2,7 @@ class Dart-prl01 < Formula
   desc "DART: Dynamic Animation and Robotics Toolkit"
   homepage "http://dartsim.github.io"
   url "https://github.com/personalrobotics/dart/archive/prl-v0.1.tar.gz"
-  sha256 "795d9438e8aaf8a88f4ad7036369e86109989df94d0d450436af26f8378276df"
+  sha256 "7c942f32f1241489a763ac2688a44d4360d071cd33491a2c68782b98d6aac7fc"
   head "https://github.com/personalrobotics/dart.git", :branch => "dart-prl-0.1"
   option "core-only", "Build dart-core only"
 
