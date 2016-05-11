@@ -4,7 +4,6 @@ class Dartsim6 < Formula
   url "https://github.com/dartsim/dart/archive/v6.0.0.tar.gz"
   sha256 "541fadb62d4ebadd6aac62748a94b97bc2ff5b132ced8b91cf2be28c8bc02fe0"
   head "https://github.com/dartsim/dart.git", :branch => "release-6.0"
-  option
 
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build
