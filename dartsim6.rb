@@ -2,7 +2,7 @@ class Dartsim6 < Formula
   desc "DART: Dynamic Animation and Robotics Toolkit"
   homepage "http://dartsim.github.io"
   url "https://github.com/dartsim/dart/archive/v6.0.1.tar.gz"
-  sha256 "2224ef53984b7720cd9d9ae89fefdc81355bebd8010a6f647248c40d43408cfe"
+  sha256 "d53e6a305ee214f2d7d2cc62937fcbdbccd14868dcf9649607460fccc9507b7c"
   head "https://github.com/dartsim/dart.git", :branch => "release-6.0"
 
   depends_on "cmake" => :build
