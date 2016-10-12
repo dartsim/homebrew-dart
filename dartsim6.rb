@@ -30,7 +30,6 @@ class Dartsim6 < Formula
   depends_on "ros/deps/urdfdom" => :recommended
 
   # dart-gui
-  depends_on "freeglut" => :recommended
   depends_on "open-scene-graph" => :recommended
 
   def install
