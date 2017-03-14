@@ -28,4 +28,3 @@ script:
   - brew style `ls $(brew --repo)/Library/Taps/dartsim/homebrew-dart/*.rb`
   - brew fetch `ls $(brew --repo)/Library/Taps/dartsim/homebrew-dart/*.rb` | grep -v '%$'
   - brew unpack --patch `ls $(brew --repo)/Library/Taps/dartsim/homebrew-dart/*.rb`
-
