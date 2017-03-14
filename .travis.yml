@@ -32,7 +32,7 @@ before_install:
   - ulimit -n 1024
 
 script:
-  - brew test-bot
+  - brew test-bot --fast
 
 notifications:
   email:
