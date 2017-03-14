@@ -1,4 +1,4 @@
-language: objective-c
+language: ruby
 
 matrix:
   include:
@@ -16,15 +16,24 @@ matrix:
       rvm: system
 
 before_install:
-  - brew update > /dev/null || brew update > /dev/null
-
-install:
-  - mkdir -p $(brew --repo)/Library/Taps/dartsim
-  - ln -s $PWD $(brew --repo)/Library/Taps/dartsim/homebrew-dart
-  - brew tap --repair
+  - export TRAVIS_COMMIT="$(git rev-parse --verify -q HEAD)"
+  - if [ -f ".git/shallow" ]; then
+      travis_retry git fetch --unshallow;
+    fi
+  - HOMEBREW_REPOSITORY="$(brew --repo)"
+  - sudo chown -R "$USER" "$HOMEBREW_REPOSITORY"
+  - git -C "$HOMEBREW_REPOSITORY" reset --hard origin/master
+  - brew update || brew update
+  - HOMEBREW_TAP_DIR="$(brew --repo "$TRAVIS_REPO_SLUG")"
+  - rm -rf "$HOMEBREW_TAP_DIR"
+  - ln -s "$PWD" "$HOMEBREW_TAP_DIR"
+  - export HOMEBREW_DEVELOPER="1"
+  - ulimit -n 1024
 
 script:
-  - brew audit `ls $(brew --repo)/Library/Taps/dartsim/homebrew-dart/*.rb`
-  - brew style `ls $(brew --repo)/Library/Taps/dartsim/homebrew-dart/*.rb`
-  - brew fetch `ls $(brew --repo)/Library/Taps/dartsim/homebrew-dart/*.rb` | grep -v '%$'
-  - brew unpack --patch `ls $(brew --repo)/Library/Taps/dartsim/homebrew-dart/*.rb`
+  - brew test-bot
+
+notifications:
+  email:
+    on_success: never
+    on_failure: always
