@@ -1,6 +1,6 @@
 class Dartsim6 < Formula
   desc "DART: Dynamic Animation and Robotics Toolkit"
-  homepage "http://dartsim.github.io"
+  homepage "https://dartsim.github.io"
   url "https://github.com/dartsim/dart/archive/v6.1.2.tar.gz"
   sha256 "c84e9a5e8e11651f86ed0a603898470f25ed844b7d5797081df0b7fc9a106e55"
   head "https://github.com/dartsim/dart.git", :branch => "release-6.1"
@@ -35,6 +35,10 @@ class Dartsim6 < Formula
   def install
     cmake_args = std_cmake_args
     system "cmake", ".", *cmake_args
-    system "make install"
+    system "make", "install"
+  end
+
+  test do
+    system "false"
   end
 end

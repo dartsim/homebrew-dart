@@ -1,10 +1,13 @@
 class Dartsim5 < Formula
   desc "DART: Dynamic Animation and Robotics Toolkit"
-  homepage "http://dartsim.github.io"
+  homepage "https://dartsim.github.io"
   url "https://github.com/dartsim/dart/archive/v5.1.5.tar.gz"
   sha256 "8b55930ecdec99edabd88a62e3fe362e6104ccaa4bd0d5f68a2c1ef5bff2f0f4"
   head "https://github.com/dartsim/dart.git", :branch => "release-5.1"
-  option "core-only", "Build dart-core only"
+
+  option "without-extensions", "Build dart-core only"
+
+  deprecated_option "core-only" => "without-components"
 
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build
@@ -28,6 +31,10 @@ class Dartsim5 < Formula
     cmake_args = std_cmake_args
     cmake_args << "-DBUILD_CORE_ONLY=True" if build.include? "core-only"
     system "cmake", ".", *cmake_args
-    system "make install"
+    system "make", "install"
+  end
+
+  test do
+    system "false"
   end
 end
