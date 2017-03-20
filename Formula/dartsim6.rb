@@ -5,6 +5,11 @@ class Dartsim6 < Formula
   sha256 "c84e9a5e8e11651f86ed0a603898470f25ed844b7d5797081df0b7fc9a106e55"
   head "https://github.com/dartsim/dart.git", :branch => "release-6.1"
 
+  bottle do
+    sha256 "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865" => :el_capitan
+    sha256 "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3" => :yosemite
+  end
+
   option "without-optimizer-nlopt"
   option "without-optimizer-ipopt"
   option "without-collision-bullet"
