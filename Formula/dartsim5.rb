@@ -7,6 +7,8 @@ class Dartsim5 < Formula
 
   option "with-core-only", "Build dart-core only"
 
+  deprecated_option "core-only" => "with-core-only"
+
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build
 
