@@ -1,7 +1,8 @@
-class Fcl04 < Formula
-  homepage "http://gamma.cs.unc.edu/FCL"
-  url "https://github.com/flexible-collision-library/fcl/archive/0.4.0.tar.gz"
-  sha256 "1bea2cd5ee6034166d42860a6c5577f807c81f9f54d09dd680fb9bdf58d46747"
+class Fcl < Formula
+  desc "Flexible Collision Library"
+  homepage "https://gamma.cs.unc.edu/FCL"
+  url "https://github.com/flexible-collision-library/fcl/archive/0.5.0.tar.gz"
+  sha256 "8e6c19720e77024c1fbff5a912d81e8f28004208864607447bc90a31f18fb41a"
   head "https://github.com/flexible-collision-library/fcl.git"
 
   depends_on "boost"
@@ -12,7 +13,7 @@ class Fcl04 < Formula
 
   def install
     system "cmake", ".", *std_cmake_args
-    system "make install"
+    system "make", "install"
   end
 
   test do
