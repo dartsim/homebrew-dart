@@ -48,7 +48,6 @@ class Dartsim6 < Formula
   # dart-gui-osg
   depends_on "open-scene-graph" if build.with? ["gui", "gui-osg"]
 
-  conflicts_with "dartsim3", :because => "Differing version of the same formula"
   conflicts_with "dartsim4", :because => "Differing version of the same formula"
   conflicts_with "dartsim5", :because => "Differing version of the same formula"
 

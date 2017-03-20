@@ -26,7 +26,6 @@ class Dartsim5 < Formula
   depends_on "homebrew/science/ipopt" unless build.with? "core-only" => :optional
   depends_on "open-scene-graph" unless build.with? "core-only" => :optional
 
-  conflicts_with "dartsim3", :because => "Differing version of the same formula"
   conflicts_with "dartsim4", :because => "Differing version of the same formula"
 
   def install
