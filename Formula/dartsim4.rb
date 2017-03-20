@@ -16,10 +16,10 @@ class Dartsim4 < Formula
   depends_on "dartsim/dart/fcl"
   depends_on "homebrew/science/libccd"
 
-  depends_on "homebrew/science/flann" unless build.with? "core-only"
-  depends_on "tinyxml" unless build.with? "core-only"
-  depends_on "tinyxml2" unless build.with? "core-only"
-  depends_on "ros/deps/urdfdom" unless build.with? "core-only"
+  depends_on "homebrew/science/flann" if build.without? "core-only"
+  depends_on "tinyxml" if build.without? "core-only"
+  depends_on "tinyxml2" if build.without? "core-only"
+  depends_on "ros/deps/urdfdom" if build.without? "core-only"
 
   def install
     cmake_args = std_cmake_args

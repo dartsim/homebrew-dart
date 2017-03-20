@@ -18,13 +18,13 @@ class Dartsim5 < Formula
 
   depends_on "bullet" => [:optional, "with-shared", "with-double-precision"]
 
-  depends_on "homebrew/science/flann" unless build.with? "core-only"
-  depends_on "tinyxml" unless build.with? "core-only"
-  depends_on "tinyxml2" unless build.with? "core-only"
-  depends_on "ros/deps/urdfdom" unless build.with? "core-only"
-  depends_on "homebrew/science/nlopt" unless build.with? "core-only" => :optional
-  depends_on "homebrew/science/ipopt" unless build.with? "core-only" => :optional
-  depends_on "open-scene-graph" unless build.with? "core-only" => :optional
+  depends_on "homebrew/science/flann" if build.without? "core-only"
+  depends_on "tinyxml" if build.without? "core-only"
+  depends_on "tinyxml2" if build.without? "core-only"
+  depends_on "ros/deps/urdfdom" if build.without? "core-only"
+  depends_on "homebrew/science/nlopt" if build.without? "core-only" => :optional
+  depends_on "homebrew/science/ipopt" if build.without? "core-only" => :optional
+  depends_on "open-scene-graph" if build.without? "core-only" => :optional
 
   conflicts_with "dartsim4", :because => "Differing version of the same formula"
 
