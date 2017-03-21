@@ -6,6 +6,7 @@ class Dartsim6 < Formula
   head "https://github.com/dartsim/dart.git", :branch => "release-6.1"
 
   bottle do
+    sha256 "4921af80137af9cc3d38fd17c9120da882448a090b0a8a3a19af3199b415bfca" => :sierra
     sha256 "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865" => :el_capitan
     sha256 "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3" => :yosemite
   end
