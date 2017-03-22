@@ -23,6 +23,9 @@ class Dartsim4 < Formula
   depends_on "tinyxml2" if build.without? "core-only"
   depends_on "ros/deps/urdfdom" if build.without? "core-only"
 
+  conflicts_with "dartsim5", :because => "Differing version of the same formula"
+  conflicts_with "dartsim6", :because => "Differing version of the same formula"
+
   def install
     cmake_args = std_cmake_args
     cmake_args << "-DBUILD_CORE_ONLY=True" if build.with? "core-only"

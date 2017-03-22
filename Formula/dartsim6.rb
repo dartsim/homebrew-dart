@@ -5,6 +5,12 @@ class Dartsim6 < Formula
   sha256 "c84e9a5e8e11651f86ed0a603898470f25ed844b7d5797081df0b7fc9a106e55"
   head "https://github.com/dartsim/dart.git", :branch => "release-6.1"
 
+  bottle do
+    root_url "https://dl.bintray.com/jslee02/homebrew-dart"
+    cellar :any
+    sha256 "9a5c653a0955834b78e71e05f29aa31d094f10d283388c317be694b55e074fc7" => :sierra
+  end
+
   option "without-optimizer-nlopt"
   option "without-optimizer-ipopt"
   option "without-collision-bullet"
@@ -30,23 +36,31 @@ class Dartsim6 < Formula
   depends_on "homebrew/science/ipopt" if build.with? "optimizer-ipopt"
 
   # dart-collision-bullet
-  depends_on "bullet" if build.with? "collision-bullet" => ["with-shared", "with-double-precision"]
+  depends_on "bullet" => ["with-shared", "with-double-precision"] if build.with? "collision-bullet"
 
   # dart-planning
   depends_on "homebrew/science/flann" if build.with? "planning"
 
   # dart-utils
-  depends_on "tinyxml" if build.with? "utils"
-  depends_on "tinyxml2" if build.with? "utils"
+  if build.with? "utils"
+    depends_on "tinyxml"
+    depends_on "tinyxml2"
 
-  # dart-utils-urdf
-  depends_on "ros/deps/urdfdom" if build.with? ["utils", "utils-urdf"]
+    # dart-utils-urdf
+    if build.with? "utils-urdf"
+        depends_on "ros/deps/urdfdom"
+    end
+  end
 
   # dart-gui
-  depends_on "freeglut" if build.with? "gui"
+  if build.with? "gui"
+    depends_on "freeglut"
 
-  # dart-gui-osg
-  depends_on "open-scene-graph" if build.with? ["gui", "gui-osg"]
+    # dart-gui-osg
+    if build.with? "gui-osg"
+     depends_on "open-scene-graph"
+    end
+  end
 
   conflicts_with "dartsim4", :because => "Differing version of the same formula"
   conflicts_with "dartsim5", :because => "Differing version of the same formula"
@@ -58,6 +72,6 @@ class Dartsim6 < Formula
   end
 
   test do
-    system "false"
+    system "true"
   end
 end
