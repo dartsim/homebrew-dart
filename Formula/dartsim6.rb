@@ -42,17 +42,25 @@ class Dartsim6 < Formula
   depends_on "homebrew/science/flann" if build.with? "planning"
 
   # dart-utils
-  depends_on "tinyxml" if build.with? "utils"
-  depends_on "tinyxml2" if build.with? "utils"
+  if build.with? "utils"
+    depends_on "tinyxml"
+    depends_on "tinyxml2"
 
-  # dart-utils-urdf
-  depends_on "ros/deps/urdfdom" if build.with? "utils" && build.with? "utils-urdf"
+    # dart-utils-urdf
+    if build.with? "utils-urdf"
+        depends_on "ros/deps/urdfdom"
+    end
+  end
 
   # dart-gui
-  depends_on "freeglut" if build.with? "gui"
+  if build.with? "gui"
+    depends_on "freeglut"
 
-  # dart-gui-osg
-  depends_on "open-scene-graph" if build.with? "gui" && build.with? "gui-osg"
+    # dart-gui-osg
+    if build.with? "gui-osg"
+     depends_on "open-scene-graph"
+    end
+  end
 
   conflicts_with "dartsim4", :because => "Differing version of the same formula"
   conflicts_with "dartsim5", :because => "Differing version of the same formula"
