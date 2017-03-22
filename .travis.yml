@@ -33,7 +33,6 @@ before_install:
 
 script:
   - brew test-bot
-  - brew test-bot --ci-upload
 
 notifications:
   email:
