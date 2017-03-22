@@ -36,7 +36,7 @@ class Dartsim6 < Formula
   depends_on "homebrew/science/ipopt" if build.with? "optimizer-ipopt"
 
   # dart-collision-bullet
-  depends_on "bullet" if build.with? "collision-bullet" => ["with-shared", "with-double-precision"]
+  depends_on "bullet" => ["with-shared", "with-double-precision"] if build.with? "collision-bullet"
 
   # dart-planning
   depends_on "homebrew/science/flann" if build.with? "planning"
@@ -46,13 +46,13 @@ class Dartsim6 < Formula
   depends_on "tinyxml2" if build.with? "utils"
 
   # dart-utils-urdf
-  depends_on "ros/deps/urdfdom" if build.with? ["utils", "utils-urdf"]
+  depends_on "ros/deps/urdfdom" if build.with? "utils" && build.with? "utils-urdf"
 
   # dart-gui
   depends_on "freeglut" if build.with? "gui"
 
   # dart-gui-osg
-  depends_on "open-scene-graph" if build.with? ["gui", "gui-osg"]
+  depends_on "open-scene-graph" if build.with? "gui" && build.with? "gui-osg"
 
   conflicts_with "dartsim4", :because => "Differing version of the same formula"
   conflicts_with "dartsim5", :because => "Differing version of the same formula"
