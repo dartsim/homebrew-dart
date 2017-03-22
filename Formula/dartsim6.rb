@@ -66,6 +66,7 @@ class Dartsim6 < Formula
   end
 
   test do
-    system "false"
+    system "make", "tests"
+    system "make", "test"
   end
 end
