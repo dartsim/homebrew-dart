@@ -29,6 +29,7 @@ class Dartsim5 < Formula
   depends_on "open-scene-graph" if build.without? "core-only" => :optional
 
   conflicts_with "dartsim4", :because => "Differing version of the same formula"
+  conflicts_with "dartsim6", :because => "Differing version of the same formula"
 
   def install
     cmake_args = std_cmake_args
