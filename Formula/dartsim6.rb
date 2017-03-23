@@ -8,7 +8,8 @@ class Dartsim6 < Formula
   bottle do
     root_url "https://dl.bintray.com/jslee02/homebrew-dart"
     cellar :any
-    sha256 "9a5c653a0955834b78e71e05f29aa31d094f10d283388c317be694b55e074fc7" => :sierra
+    rebuild 1
+    sha256 "ca6e5126a8f4a247b1b8d4937ed93a2f8719499888b8544f8d00b40f25235699" => :sierra
   end
 
   option "without-optimizer-nlopt"
