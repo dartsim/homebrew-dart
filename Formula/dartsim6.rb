@@ -49,7 +49,7 @@ class Dartsim6 < Formula
 
     # dart-utils-urdf
     if build.with? "utils-urdf"
-        depends_on "ros/deps/urdfdom"
+      depends_on "ros/deps/urdfdom"
     end
   end
 
@@ -59,7 +59,7 @@ class Dartsim6 < Formula
 
     # dart-gui-osg
     if build.with? "gui-osg"
-     depends_on "open-scene-graph"
+      depends_on "open-scene-graph"
     end
   end
 
