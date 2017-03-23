@@ -6,7 +6,7 @@ class Dartsim6 < Formula
   head "https://github.com/dartsim/dart.git", :branch => "release-6.1"
 
   bottle do
-    root_url "https://dl.bintray.com/jslee02/homebrew-dart"
+    root_url "https://dl.bintray.com/dartsim/dart"
     cellar :any
     rebuild 1
     sha256 "ca6e5126a8f4a247b1b8d4937ed93a2f8719499888b8544f8d00b40f25235699" => :sierra
