@@ -6,9 +6,10 @@ class Dartsim6 < Formula
   head "https://github.com/dartsim/dart.git", :branch => "release-6.1"
 
   bottle do
-    root_url "https://dl.bintray.com/jslee02/homebrew-dart"
+    root_url "https://dl.bintray.com/dartsim/dart"
     cellar :any
-    sha256 "9a5c653a0955834b78e71e05f29aa31d094f10d283388c317be694b55e074fc7" => :sierra
+    rebuild 1
+    sha256 "ca6e5126a8f4a247b1b8d4937ed93a2f8719499888b8544f8d00b40f25235699" => :sierra
   end
 
   option "without-optimizer-nlopt"
@@ -48,7 +49,7 @@ class Dartsim6 < Formula
 
     # dart-utils-urdf
     if build.with? "utils-urdf"
-        depends_on "ros/deps/urdfdom"
+      depends_on "ros/deps/urdfdom"
     end
   end
 
@@ -58,7 +59,7 @@ class Dartsim6 < Formula
 
     # dart-gui-osg
     if build.with? "gui-osg"
-     depends_on "open-scene-graph"
+      depends_on "open-scene-graph"
     end
   end
 
