@@ -1,7 +1,7 @@
 class Dartsim6 < Formula
   desc "DART: Dynamic Animation and Robotics Toolkit"
   homepage "https://dartsim.github.io"
-  url "https://github.com/dartsim/dart/archive/v6.1.2.tar.gz"
+  url "https://github.com/dartsim/dart/archive/v6.2.0.tar.gz"
   sha256 "c84e9a5e8e11651f86ed0a603898470f25ed844b7d5797081df0b7fc9a106e55"
   head "https://github.com/dartsim/dart.git", :branch => "release-6.1"
 
@@ -15,6 +15,7 @@ class Dartsim6 < Formula
   option "without-optimizer-nlopt"
   option "without-optimizer-ipopt"
   option "without-collision-bullet"
+  option "without-collision-ode"
   option "without-planning"
   option "without-utils"
   option "without-utils-urdf"
@@ -38,6 +39,9 @@ class Dartsim6 < Formula
 
   # dart-collision-bullet
   depends_on "bullet" => ["with-shared", "with-double-precision"] if build.with? "collision-bullet"
+
+  # dart-collision-ode
+  depends_on "ode" => ["with-libccd"] if build.with? "collision-ode"
 
   # dart-planning
   depends_on "homebrew/science/flann" if build.with? "planning"
