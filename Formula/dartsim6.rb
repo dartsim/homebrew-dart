@@ -2,7 +2,7 @@ class Dartsim6 < Formula
   desc "DART: Dynamic Animation and Robotics Toolkit"
   homepage "https://dartsim.github.io"
   url "https://github.com/dartsim/dart/archive/v6.2.0.tar.gz"
-  sha256 "c84e9a5e8e11651f86ed0a603898470f25ed844b7d5797081df0b7fc9a106e55"
+  sha256 "fac3000412280ffd3013273c91e12553bbcd9a6889916b6e95f462dde632980d"
   head "https://github.com/dartsim/dart.git", :branch => "release-6.1"
 
   bottle do
