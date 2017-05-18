@@ -5,13 +5,6 @@ class Dartsim6 < Formula
   sha256 "fac3000412280ffd3013273c91e12553bbcd9a6889916b6e95f462dde632980d"
   head "https://github.com/dartsim/dart.git", :branch => "release-6.2"
 
-  bottle do
-    root_url "https://dl.bintray.com/dartsim/dart"
-    cellar :any
-    rebuild 1
-    sha256 "ca6e5126a8f4a247b1b8d4937ed93a2f8719499888b8544f8d00b40f25235699" => :sierra
-  end
-
   option "without-optimizer-nlopt"
   option "without-optimizer-ipopt"
   option "without-collision-bullet"
@@ -38,10 +31,10 @@ class Dartsim6 < Formula
   depends_on "homebrew/science/ipopt" if build.with? "optimizer-ipopt"
 
   # dart-collision-bullet
-  depends_on "bullet" => ["with-shared", "with-double-precision"] if build.with? "collision-bullet"
+  depends_on "bullet" => ["with-double-precision"] if build.with? "collision-bullet"
 
   # dart-collision-ode
-  depends_on "ode" => ["with-libccd", "with-double-precision"] if build.with? "collision-ode"
+  depends_on "ode" => ["with-double-precision", "with-libccd"] if build.with? "collision-ode"
 
   # dart-planning
   depends_on "homebrew/science/flann" if build.with? "planning"
