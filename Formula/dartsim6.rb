@@ -41,7 +41,7 @@ class Dartsim6 < Formula
   depends_on "bullet" => ["with-shared", "with-double-precision"] if build.with? "collision-bullet"
 
   # dart-collision-ode
-  depends_on "ode" => ["with-libccd"] if build.with? "collision-ode"
+  depends_on "ode" => ["with-libccd", "with-double-precision"] if build.with? "collision-ode"
 
   # dart-planning
   depends_on "homebrew/science/flann" if build.with? "planning"
