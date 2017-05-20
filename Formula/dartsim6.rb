@@ -3,7 +3,6 @@ class Dartsim6 < Formula
   homepage "https://dartsim.github.io"
   url "https://github.com/dartsim/dart/archive/v6.2.0.tar.gz"
   sha256 "fac3000412280ffd3013273c91e12553bbcd9a6889916b6e95f462dde632980d"
-  revision 1
   head "https://github.com/dartsim/dart.git", :branch => "release-6.2"
 
   option "without-optimizer-nlopt"
