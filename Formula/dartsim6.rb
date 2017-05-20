@@ -31,10 +31,10 @@ class Dartsim6 < Formula
   depends_on "homebrew/science/ipopt" if build.with? "optimizer-ipopt"
 
   # dart-collision-bullet
-  depends_on "bullet" => ["with-double-precision"] if build.with? "collision-bullet"
+  depends_on "bullet" => if build.with? "collision-bullet"
 
   # dart-collision-ode
-  depends_on "ode" => ["with-double-precision", "with-libccd"] if build.with? "collision-ode"
+  depends_on "ode" => if build.with? "collision-ode"
 
   # dart-planning
   depends_on "homebrew/science/flann" if build.with? "planning"
