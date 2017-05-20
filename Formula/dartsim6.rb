@@ -1,20 +1,14 @@
 class Dartsim6 < Formula
   desc "DART: Dynamic Animation and Robotics Toolkit"
   homepage "https://dartsim.github.io"
-  url "https://github.com/dartsim/dart/archive/v6.1.2.tar.gz"
-  sha256 "c84e9a5e8e11651f86ed0a603898470f25ed844b7d5797081df0b7fc9a106e55"
-  head "https://github.com/dartsim/dart.git", :branch => "release-6.1"
-
-  bottle do
-    root_url "https://dl.bintray.com/dartsim/dart"
-    cellar :any
-    rebuild 1
-    sha256 "ca6e5126a8f4a247b1b8d4937ed93a2f8719499888b8544f8d00b40f25235699" => :sierra
-  end
+  url "https://github.com/dartsim/dart/archive/v6.2.0.tar.gz"
+  sha256 "fac3000412280ffd3013273c91e12553bbcd9a6889916b6e95f462dde632980d"
+  head "https://github.com/dartsim/dart.git", :branch => "release-6.2"
 
   option "without-optimizer-nlopt"
-  option "without-optimizer-ipopt"
+  option "with-optimizer-ipopt"
   option "without-collision-bullet"
+  option "without-collision-ode"
   option "without-planning"
   option "without-utils"
   option "without-utils-urdf"
@@ -37,7 +31,10 @@ class Dartsim6 < Formula
   depends_on "homebrew/science/ipopt" if build.with? "optimizer-ipopt"
 
   # dart-collision-bullet
-  depends_on "bullet" => ["with-shared", "with-double-precision"] if build.with? "collision-bullet"
+  depends_on "bullet" if build.with? "collision-bullet"
+
+  # dart-collision-ode
+  depends_on "ode" if build.with? "collision-ode"
 
   # dart-planning
   depends_on "homebrew/science/flann" if build.with? "planning"
