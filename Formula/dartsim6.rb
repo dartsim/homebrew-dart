@@ -6,7 +6,7 @@ class Dartsim6 < Formula
   head "https://github.com/dartsim/dart.git", :branch => "release-6.2"
 
   option "without-optimizer-nlopt"
-  option "with-optimizer-ipopt"
+  option "without-optimizer-ipopt"
   option "without-collision-bullet"
   option "without-collision-ode"
   option "without-planning"
