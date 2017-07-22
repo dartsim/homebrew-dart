@@ -17,6 +17,6 @@ class Fcl03 < Formula
   end
 
   test do
-    system "false"
+    system "true"
   end
 end
