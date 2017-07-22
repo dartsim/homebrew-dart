@@ -1,8 +1,8 @@
 class Fcl03 < Formula
   desc "Flexible Collision Library"
   homepage "http://gamma.cs.unc.edu/FCL"
-  url "https://github.com/flexible-collision-library/fcl/archive/0.3.2.tar.gz"
-  sha256 "cf914f85b32cf8b63879907726df64e50da33f00d538759d789fe10fc5fbc95b"
+  url "https://github.com/flexible-collision-library/fcl/archive/0.3.4.tar.gz"
+  sha256 "0c688324ebc43e1de4c210ae36b00e0d4812a3d00cf0646e256b55f7a72258d3"
   head "https://github.com/flexible-collision-library/fcl.git"
 
   depends_on "boost"
@@ -17,6 +17,6 @@ class Fcl03 < Formula
   end
 
   test do
-    system "false"
+    system "true"
   end
 end
