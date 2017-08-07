@@ -18,7 +18,7 @@ class Dartsim5 < Formula
   depends_on "dartsim/dart/fcl"
   depends_on "homebrew/science/libccd"
 
-  depends_on "bullet" => [:optional, "with-shared", "with-double-precision"]
+  depends_on "bullet" => :optional
 
   depends_on "homebrew/science/flann" if build.without? "core-only"
   depends_on "tinyxml" if build.without? "core-only"
