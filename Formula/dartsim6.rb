@@ -1,8 +1,8 @@
 class Dartsim6 < Formula
   desc "DART: Dynamic Animation and Robotics Toolkit"
   homepage "https://dartsim.github.io"
-  url "https://github.com/dartsim/dart/archive/v6.2.0.tar.gz"
-  sha256 "fac3000412280ffd3013273c91e12553bbcd9a6889916b6e95f462dde632980d"
+  url "https://github.com/dartsim/dart/archive/v6.2.1.tar.gz"
+  sha256 "bde40a5368aa6e5373e1b892ba7888d86b90413660ea0d7c71c0fe40a62e5c9b"
   head "https://github.com/dartsim/dart.git", :branch => "release-6.2"
 
   option "without-optimizer-nlopt"
