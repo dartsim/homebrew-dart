@@ -44,7 +44,6 @@ class Dartsim5 < Formula
       int main() {
         auto world = new dart::simulation::World();
         assert(world != nullptr);
-        
         return 0;
       }
     EOS
