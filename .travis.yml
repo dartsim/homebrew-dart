@@ -1,3 +1,5 @@
+# Reference: https://github.com/Homebrew/brew/blob/master/Library/Homebrew/dev-cmd/tap-new.rb
+
 language: ruby
 
 matrix:
