@@ -48,7 +48,7 @@ class Dartsim5 < Formula
         return 0;
       }
     EOS
-    system ENV.cc, "test.cpp", "-I#{include}/eigen3", "-L#{lib}", "-ldart", "-lc++", "-std=c++11", "-o", "test"
+    system ENV.cc, "test.cpp", "-I#{include}/eigen3", "-L#{lib}", "-ldart", "-lassimp", "-lc++", "-std=c++11", "-o", "test"
     system "./test"
   end
 end
