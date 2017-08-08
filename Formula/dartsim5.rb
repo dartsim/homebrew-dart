@@ -39,6 +39,16 @@ class Dartsim5 < Formula
   end
 
   test do
-    system "false"
+    (testpath/"test.cpp").write <<-EOS.undent
+      #include <dart/dart-core.h>
+      int main() {
+        auto world = new dart::simulation::World();
+        assert(world != nullptr);
+        
+        return 0;
+      }
+    EOS
+    system ENV.cc, "test.cpp", "-I#{include}/eigen3", "-L#{lib}", "-ldart", "-lc++", "-std=c++11", "-o", "test"
+    system "./test"
   end
 end
