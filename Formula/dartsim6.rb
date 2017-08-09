@@ -45,9 +45,7 @@ class Dartsim6 < Formula
     depends_on "tinyxml2"
 
     # dart-utils-urdf
-    if build.with? "utils-urdf"
-      depends_on "ros/deps/urdfdom"
-    end
+    depends_on "ros/deps/urdfdom" if build.with? "utils-urdf"
   end
 
   # dart-gui
@@ -55,9 +53,7 @@ class Dartsim6 < Formula
     depends_on "freeglut"
 
     # dart-gui-osg
-    if build.with? "gui-osg"
-      depends_on "open-scene-graph"
-    end
+    depends_on "open-scene-graph" if build.with? "gui-osg"
   end
 
   conflicts_with "dartsim4", :because => "Differing version of the same formula"
