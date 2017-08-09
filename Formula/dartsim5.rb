@@ -42,7 +42,7 @@ class Dartsim5 < Formula
     (testpath/"test.cpp").write <<-EOS.undent
       #include <dart/dart-core.h>
       int main() {
-        auto world = new dart::simulation::World();
+        auto world = std::make_shared<dart::simulation::World>();
         assert(world != nullptr);
         return 0;
       }
