@@ -37,7 +37,7 @@ class Dartsim6 < Formula
   depends_on "ode" if build.with? "collision-ode"
 
   # dart-planning
-  depends_on "homebrew/science/flann" if build.with? "planning"
+  depends_on "flann" if build.with? "planning"
 
   # dart-utils
   if build.with? "utils"
