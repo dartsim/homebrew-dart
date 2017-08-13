@@ -8,7 +8,7 @@ class Fcl04 < Formula
   depends_on "boost"
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build
-  depends_on "homebrew/science/flann" => :optional
+  depends_on "flann" => :optional
   depends_on "homebrew/science/libccd"
 
   def install
