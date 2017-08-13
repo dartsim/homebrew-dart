@@ -1,8 +1,8 @@
 class Dartsim5 < Formula
   desc "DART: Dynamic Animation and Robotics Toolkit"
   homepage "https://dartsim.github.io"
-  url "https://github.com/dartsim/dart/archive/v5.1.5.tar.gz"
-  sha256 "8b55930ecdec99edabd88a62e3fe362e6104ccaa4bd0d5f68a2c1ef5bff2f0f4"
+  url "https://github.com/dartsim/dart/archive/v5.1.6.tar.gz"
+  sha256 "b3b04a321fed0e63483413cc7a9bea780a0b97b7baacf64a574cc042f612d1e3"
   head "https://github.com/dartsim/dart.git", :branch => "release-5.1"
 
   option "with-core-only", "Build dart-core only"
@@ -18,7 +18,7 @@ class Dartsim5 < Formula
   depends_on "dartsim/dart/fcl"
   depends_on "homebrew/science/libccd"
 
-  depends_on "bullet" => [:optional, "with-shared", "with-double-precision"]
+  depends_on "bullet" => :optional
 
   depends_on "homebrew/science/flann" if build.without? "core-only"
   depends_on "tinyxml" if build.without? "core-only"
@@ -39,6 +39,15 @@ class Dartsim5 < Formula
   end
 
   test do
-    system "false"
+    (testpath/"test.cpp").write <<-EOS.undent
+      #include <dart/dart-core.h>
+      int main() {
+        auto world = std::make_shared<dart::simulation::World>();
+        assert(world != nullptr);
+        return 0;
+      }
+    EOS
+    system ENV.cc, "test.cpp", "-I#{include}/eigen3", "-L#{lib}", "-ldart", "-lassimp", "-lc++", "-std=c++11", "-o", "test"
+    system "./test"
   end
 end
