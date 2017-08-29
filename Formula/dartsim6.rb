@@ -25,7 +25,7 @@ class Dartsim6 < Formula
   depends_on "homebrew/science/libccd"
 
   # dart-optimizer-nlopt
-  depends_on "homebrew/science/nlopt" if build.with? "optimizer-nlopt"
+  depends_on "nlopt" if build.with? "optimizer-nlopt"
 
   # dart-optimizer-ipopt
   depends_on "homebrew/science/ipopt" if build.with? "optimizer-ipopt"

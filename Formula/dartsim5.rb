@@ -24,7 +24,7 @@ class Dartsim5 < Formula
   depends_on "tinyxml" if build.without? "core-only"
   depends_on "tinyxml2" if build.without? "core-only"
   depends_on "ros/deps/urdfdom" if build.without? "core-only"
-  depends_on "homebrew/science/nlopt" if build.without? "core-only" => :optional
+  depends_on "nlopt" if build.without? "core-only" => :optional
   depends_on "homebrew/science/ipopt" if build.without? "core-only" => :optional
   depends_on "open-scene-graph" if build.without? "core-only" => :optional
 
