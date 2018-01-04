@@ -8,14 +8,6 @@ matrix:
       os: osx
       osx_image: xcode8.1
       rvm: system
-    - env: OSX=10.11
-      os: osx
-      osx_image: xcode7.3
-      rvm: system
-    - env: OSX=10.10
-      os: osx
-      osx_image: xcode6.4
-      rvm: system
 
 before_install:
   # Required to install freeglut on OS X 10.10
