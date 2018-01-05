@@ -20,7 +20,7 @@ class Dartsim4 < Formula
 
   depends_on "flann" if build.without? "core-only"
   depends_on "tinyxml" if build.without? "core-only"
-  depends_on "tinyxml2@5" if build.without? "core-only"
+  depends_on "tinyxml2@3" if build.without? "core-only"
   depends_on "ros/deps/urdfdom" if build.without? "core-only"
 
   conflicts_with "dartsim5", :because => "Differing version of the same formula"
