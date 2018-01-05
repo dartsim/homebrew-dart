@@ -22,7 +22,7 @@ class Dartsim6 < Formula
   depends_on "boost"
   depends_on "eigen"
   depends_on "dartsim/dart/fcl"
-  depends_on "homebrew/science/libccd"
+  depends_on "dartsim/dart/libccd"
 
   # dart-optimizer-nlopt
   depends_on "nlopt" if build.with? "optimizer-nlopt"

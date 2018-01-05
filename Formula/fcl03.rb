@@ -9,7 +9,7 @@ class Fcl03 < Formula
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build
   depends_on "flann" => :optional
-  depends_on "homebrew/science/libccd"
+  depends_on "dartsim/dart/libccd"
 
   def install
     system "cmake", ".", *std_cmake_args
