@@ -28,7 +28,7 @@ class Dartsim6 < Formula
   depends_on "nlopt" if build.with? "optimizer-nlopt"
 
   # dart-optimizer-ipopt
-  depends_on "homebrew/science/ipopt" if build.with? "optimizer-ipopt"
+  depends_on "dartsim/dart/ipopt" if build.with? "optimizer-ipopt"
 
   # dart-collision-bullet
   depends_on "bullet" if build.with? "collision-bullet"
