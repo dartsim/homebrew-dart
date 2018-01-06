@@ -6,6 +6,7 @@ class Dartsim6 < Formula
   head "https://github.com/dartsim/dart.git", :branch => "release-6.3"
 
   bottle do
+    root_url "https://dl.bintray.com/dartsim/dart"
     sha256 "64a98686a7babe15b3c6d30f7abd620e21b146e8c5fac66624af65aa376c7f5f" => :high_sierra
   end
   
