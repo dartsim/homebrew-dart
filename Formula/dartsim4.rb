@@ -1,8 +1,8 @@
 class Dartsim4 < Formula
   desc "DART: Dynamic Animation and Robotics Toolkit"
   homepage "https://dartsim.github.io"
-  url "https://github.com/dartsim/dart/archive/v4.3.6.tar.gz"
-  sha256 "12e1bac9f50d9f4057bd80ae20385216cfafb885c1ed10a0a69441e51d7729a9"
+  url "https://github.com/dartsim/dart/archive/v4.3.7.tar.gz"
+  sha256 "f98382c743194ce1e37e06e3002030efba6eb6819942eb665c3933df84789683"
   head "https://github.com/dartsim/dart.git", :branch => "release-4.3"
 
   option "with-core-only", "Build dart-core only"
@@ -34,6 +34,15 @@ class Dartsim4 < Formula
   end
 
   test do
-    system "false"
+    (testpath/"test.cpp").write <<-EOS.undent
+      #include <dart/dart.h>
+      int main() {
+        dart::simulation::World* world = new dart::simulation::World();
+        assert(world != NULL);
+        return 0;
+      }
+    EOS
+    system ENV.cc, "test.cpp", "-I#{include}/eigen3", "-L#{lib}", "-ldart", "-lassimp", "-lc++", "-o", "test"
+    system "./test"
   end
 end
