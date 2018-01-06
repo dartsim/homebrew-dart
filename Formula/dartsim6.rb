@@ -5,6 +5,10 @@ class Dartsim6 < Formula
   sha256 "aa92634c1c97d99966cf16c4a0845792941358c063409fa00c28b4039c961c25"
   head "https://github.com/dartsim/dart.git", :branch => "release-6.3"
 
+  bottle do
+    sha256 "64a98686a7babe15b3c6d30f7abd620e21b146e8c5fac66624af65aa376c7f5f" => :high_sierra
+  end
+  
   option "without-optimizer-nlopt"
   option "without-optimizer-ipopt"
   option "without-collision-bullet"
