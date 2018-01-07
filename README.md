@@ -1,6 +1,6 @@
 # homebrew-dart [![Build Status](https://travis-ci.org/dartsim/homebrew-dart.svg?branch=master)](https://travis-ci.org/dartsim/homebrew-dart)
 
-[Homebrew][homebrew] [tap][homebrew-tap] for [DART][dart] and GRIP.
+[Homebrew][homebrew] [tap][homebrew-tap] for [DART][dart] and its dependencies.
 
 ## How do I install these formulae?
 
