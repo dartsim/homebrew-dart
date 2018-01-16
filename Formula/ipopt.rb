@@ -1,8 +1,8 @@
 class Ipopt < Formula
   desc "Large-scale nonlinear optimization package"
   homepage "https://projects.coin-or.org/Ipopt"
-  url "https://www.coin-or.org/download/source/Ipopt/Ipopt-3.12.8.tgz"
-  sha256 "62c6de314220851b8f4d6898b9ae8cf0a8f1e96b68429be1161f8550bb7ddb03"
+  url "https://www.coin-or.org/download/source/Ipopt/Ipopt-3.12.9.tgz"
+  sha256 "8ff3fe1a8560896fc5559839a87c2530cac4ed231b0806e487bfd3cf2d294ab8"
   revision 1
   head "https://projects.coin-or.org/svn/Ipopt/trunk", :using => :svn
 
