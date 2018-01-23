@@ -16,7 +16,7 @@ class Dartsim4 < Formula
   depends_on "boost"
   depends_on "eigen"
   depends_on "dartsim/dart/fcl"
-  depends_on "dartsim/dart/libccd"
+  depends_on "libccd"
 
   depends_on "flann" if build.without? "core-only"
   depends_on "tinyxml" if build.without? "core-only"
