@@ -16,7 +16,7 @@ class Dartsim5 < Formula
   depends_on "boost"
   depends_on "eigen"
   depends_on "dartsim/dart/fcl"
-  depends_on "dartsim/dart/libccd"
+  depends_on "libccd"
 
   depends_on "bullet" => :optional
 
