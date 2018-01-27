@@ -7,10 +7,12 @@ class Mumps < Formula
 
   bottle :disable, "needs to be rebuilt with latest open-mpi"
 
-  depends_on :mpi => [:cc, :cxx, :f90, :recommended]
+  option "with-mpi"
+
+  depends_on "open-mpi" if build.with? "mpi"
   depends_on "openblas" => OS.mac? ? :optional : :recommended
   depends_on "veclibfort" if build.without?("openblas") && OS.mac?
-  depends_on :fortran
+  depends_on "gcc" # for gfortran
 
   if build.with? "mpi"
     if OS.mac?
