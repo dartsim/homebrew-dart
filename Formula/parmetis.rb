@@ -70,4 +70,3 @@ index 9cfc8a7..dfc0125 100644
  set_target_properties(parmetis PROPERTIES LINK_FLAGS "${MPI_LINK_FLAGS}")
 
  install(TARGETS parmetis
- 
