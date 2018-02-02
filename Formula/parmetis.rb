@@ -1,18 +1,15 @@
 class Parmetis < Formula
-  desc "Parallel graph partitioning and fill-reducing matrix"
+  desc "MPI library for graph/mesh partitioning and fill-reducing orderings"
   homepage "http://glaros.dtc.umn.edu/gkhome/metis/parmetis/overview"
   url "http://glaros.dtc.umn.edu/gkhome/fetch/sw/parmetis/parmetis-4.0.3.tar.gz"
   sha256 "f2d9a231b7cf97f1fee6e8c9663113ebf6c240d407d3c118c55b3633d6be6e5f"
-  revision 5
-
-  bottle :disable, "needs to be rebuilt with latest open-mpi"
 
   # METIS 5.* is required. It comes bundled with ParMETIS.
   # We prefer to brew it ourselves.
   depends_on "metis"
 
   depends_on "cmake" => :build
-  depends_on :mpi => :cc
+  depends_on "open-mpi"
 
   # Do not build the METIS 5.* that ships with ParMETIS.
   patch :DATA
@@ -40,7 +37,7 @@ class Parmetis < Formula
   end
 
   test do
-    system "mpirun", "-np", "4", "#{bin}/ptest", "#{pkgshare}/Graphs/rotor.graph"
+    system "mpirun", "#{bin}/ptest", "#{pkgshare}/Graphs/rotor.graph"
     ohai "Test results are in ~/Library/Logs/Homebrew/parmetis."
   end
 end
@@ -73,3 +70,4 @@ index 9cfc8a7..dfc0125 100644
  set_target_properties(parmetis PROPERTIES LINK_FLAGS "${MPI_LINK_FLAGS}")
 
  install(TARGETS parmetis
+ 
