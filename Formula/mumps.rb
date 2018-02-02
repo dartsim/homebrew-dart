@@ -2,25 +2,18 @@ class Mumps < Formula
   desc "Parallel Sparse Direct Solver"
   homepage "http://mumps-solver.org"
   url "http://mumps.enseeiht.fr/MUMPS_5.1.2.tar.gz"
-  mirror "http://graal.ens-lyon.fr/MUMPS/MUMPS_5.1.2.tar.gz"
   sha256 "eb345cda145da9aea01b851d17e54e7eef08e16bfa148100ac1f7f046cd42ae9"
 
-  bottle :disable, "needs to be rebuilt with latest open-mpi"
+  option "without-mpi", "build with MPI"
 
-  depends_on :mpi => [:cc, :cxx, :f90, :recommended]
-  depends_on "openblas" => OS.mac? ? :optional : :recommended
-  depends_on "veclibfort" if build.without?("openblas") && OS.mac?
-  depends_on :fortran
+  depends_on "open-mpi" if build.with? "mpi"
+  depends_on "openblas"
+  depends_on "gcc"
 
-  if build.with? "mpi"
-    if OS.mac?
-      depends_on "scalapack" => build.with?("openblas") ? ["with-openblas"] : []
-    else
-      depends_on "scalapack" => build.without?("openblas") ? ["without-openblas"] : []
-    end
-  end
+  depends_on "scalapack" if build.with? "mpi"
   depends_on "metis"    => :optional if build.without? "mpi"
   depends_on "parmetis" => :optional if build.with? "mpi"
+  depends_on "scotch5"  => :optional
   depends_on "scotch"   => :optional
 
   resource "mumps_simple" do
@@ -33,7 +26,7 @@ class Mumps < Formula
     if OS.mac?
       # Building dylibs with mpif90 causes segfaults on 10.8 and 10.10. Use gfortran.
       shlibs_args = ["LIBEXT=.dylib",
-                     "AR=#{ENV["FC"]} -dynamiclib -Wl,-install_name -Wl,#{lib}/$(notdir $@) -undefined dynamic_lookup -o "]
+                     "AR=gfortran -dynamiclib -Wl,-install_name -Wl,#{lib}/$(notdir $@) -undefined dynamic_lookup -o "]
     else
       shlibs_args = ["LIBEXT=.so",
                      "AR=$(FL) -shared -Wl,-soname -Wl,$(notdir $@) -o "]
@@ -41,7 +34,7 @@ class Mumps < Formula
     make_args += ["OPTF=-O", "CDEFS=-DAdd_"]
     orderingsf = "-Dpord"
 
-    makefile = build.with?("mpi") ? "Makefile.G95.PAR" : "Makefile.G95.SEQ"
+    makefile = (build.with? "mpi") ? "Makefile.G95.PAR" : "Makefile.G95.SEQ"
     cp "Make.inc/" + makefile, "Makefile.inc"
 
     if build.with? "scotch5"
@@ -91,25 +84,19 @@ class Mumps < Formula
     make_args << "ORDERINGSF=#{orderingsf}"
 
     if build.with? "mpi"
-      make_args += ["CC=#{ENV["MPICC"]} -fPIC",
-                    "FC=#{ENV["MPIFC"]} -fPIC",
-                    "FL=#{ENV["MPIFC"]} -fPIC",
+      make_args += ["CC=mpicc -fPIC",
+                    "FC=mpif90 -fPIC",
+                    "FL=mpif90 -fPIC",
                     "SCALAP=-L#{Formula["scalapack"].opt_lib} -lscalapack",
                     "INCPAR=", # Let MPI compilers fill in the blanks.
                     "LIBPAR=$(SCALAP)"]
     else
       make_args += ["CC=#{ENV["CC"]} -fPIC",
-                    "FC=#{ENV["FC"]} -fPIC",
-                    "FL=#{ENV["FC"]} -fPIC"]
+                    "FC=gfortran -fPIC",
+                    "FL=gfortran -fPIC"]
     end
 
-    if build.with? "openblas"
-      make_args << "LIBBLAS=-L#{Formula["openblas"].opt_lib} -lopenblas"
-    elsif build.with? "veclibfort"
-      make_args << "LIBBLAS=-L#{Formula["veclibfort"].opt_lib} -lvecLibFort"
-    else
-      make_args << "LIBBLAS=-lblas -llapack"
-    end
+    make_args << "LIBBLAS=-L#{Formula["openblas"].opt_lib} -lopenblas"
 
     ENV.deparallelize # Build fails in parallel on Mavericks.
 
@@ -143,7 +130,7 @@ class Mumps < Formula
 
     if build.with? "mpi"
       resource("mumps_simple").stage do
-        simple_args = ["CC=#{ENV["MPICC"]}", "prefix=#{prefix}", "mumps_prefix=#{prefix}",
+        simple_args = ["CC=mpicc", "prefix=#{prefix}", "mumps_prefix=#{prefix}",
                        "scalapack_libdir=#{Formula["scalapack"].opt_lib}"]
         if build.with? "scotch5"
           simple_args += ["scotch_libdir=#{Formula["scotch5"].opt_lib}",
@@ -152,10 +139,8 @@ class Mumps < Formula
           simple_args += ["scotch_libdir=#{Formula["scotch"].opt_lib}",
                           "scotch_libs=-L$(scotch_libdir) -lptscotch -lptscotcherr -lscotch"]
         end
-        if build.with? "openblas"
-          simple_args += ["blas_libdir=#{Formula["openblas"].opt_lib}",
-                          "blas_libs=-L$(blas_libdir) -lopenblas"]
-        end
+        simple_args += ["blas_libdir=#{Formula["openblas"].opt_lib}",
+                        "blas_libs=-L$(blas_libdir) -lopenblas"]
         system "make", "SHELL=/bin/bash", *simple_args
         lib.install ("libmumps_simple." + (OS.mac? ? "dylib" : "so"))
         include.install "mumps_simple.h"
@@ -164,13 +149,13 @@ class Mumps < Formula
   end
 
   def caveats
-    s = <<-EOS.undent
+    s = <<~EOS
       MUMPS was built with shared libraries. If required,
       static libraries are available in
         #{opt_libexec}/lib
     EOS
     if build.without? "mpi"
-      s += <<-EOS.undent
+      s += <<~EOS
       You built a sequential MUMPS library.
       Please add #{libexec}/include to the include path
       when building software that depends on MUMPS.
@@ -180,16 +165,9 @@ class Mumps < Formula
   end
 
   test do
-    ENV.fortran
     cp_r pkgshare/"examples", testpath
     opts = ["-I#{opt_include}", "-L#{opt_lib}", "-lmumps_common", "-lpord"]
-    if Tab.for_name("mumps").with? "openblas"
-      opts << "-L#{Formula["openblas"].opt_lib}" << "-lopenblas"
-    elsif OS.mac?
-      opts << "-L#{Formula["veclibfort"].opt_lib}" << "-lvecLibFort"
-    else
-      opts << "-lblas" << "-llapack"
-    end
+    opts << "-L#{Formula["openblas"].opt_lib}" << "-lopenblas"
     if Tab.for_name("mumps").with?("mpi")
       f90 = "mpif90"
       cc = "mpicc"

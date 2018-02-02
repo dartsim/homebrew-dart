@@ -1,24 +1,23 @@
 class Scotch < Formula
-  desc "Graph/mesh/hypergraph partitioning, clustering, and ordering"
+  desc "Graph and mesh partitioning, clustering, and sparse matrix ordering"
   homepage "https://gforge.inria.fr/projects/scotch"
   url "https://gforge.inria.fr/frs/download.php/file/34618/scotch_6.0.4.tar.gz"
   sha256 "f53f4d71a8345ba15e2dd4e102a35fd83915abf50ea73e1bf6efe1bc2b4220c7"
-  revision 5
-
-  bottle :disable, "needs to be rebuilt with latest open-mpi"
 
   option "without-test", "skip build-time tests (not recommended)"
-  deprecated_option "without-check" => "without-test"
 
-  depends_on :mpi => :cc
+  depends_on "bzip2" unless OS.mac?
+  depends_on "open-mpi"
   depends_on "xz" => :optional # Provides lzma compression.
 
   def install
     ENV.deparallelize if MacOS.version >= :sierra
     cd "src" do
       ln_s "Make.inc/Makefile.inc.i686_mac_darwin10", "Makefile.inc"
-      # default CFLAGS: -O3 -Drestrict=__restrict -DCOMMON_FILE_COMPRESS_GZ -DCOMMON_PTHREAD -DCOMMON_PTHREAD_BARRIER
-      #                 -DCOMMON_RANDOM_FIXED_SEED -DCOMMON_TIMING_OLD -DSCOTCH_PTHREAD -DSCOTCH_RENAME
+      # default CFLAGS:
+      # -O3 -Drestrict=__restrict -DCOMMON_FILE_COMPRESS_GZ -DCOMMON_PTHREAD
+      # -DCOMMON_PTHREAD_BARRIER -DCOMMON_RANDOM_FIXED_SEED -DCOMMON_TIMING_OLD
+      # -DSCOTCH_PTHREAD -DSCOTCH_RENAME
       # MPI implementation is not threadsafe, do not use DSCOTCH_PTHREAD
 
       cflags   = %w[-O3 -fPIC -Drestrict=__restrict -DCOMMON_PTHREAD_BARRIER
@@ -32,16 +31,22 @@ class Scotch < Formula
       ldflags += %W[-L#{Formula["xz"].lib} -llzma] if build.with? "xz"
 
       make_args = ["CCS=#{ENV["CC"]}",
-                   "CCP=#{ENV["MPICC"]}",
-                   "CCD=#{ENV["MPICC"]}",
+                   "CCP=mpicc",
+                   "CCD=mpicc",
                    "RANLIB=echo",
                    "CFLAGS=#{cflags.join(" ")}",
                    "LDFLAGS=#{ldflags.join(" ")}"]
 
-      make_args << "LIB=.dylib"
-      make_args << "AR=libtool"
-      arflags = ldflags.join(" ") + " -dynamic -install_name #{lib}/$(notdir $@) -undefined dynamic_lookup -o"
-      make_args << "ARFLAGS=#{arflags}"
+      if OS.mac?
+        make_args << "LIB=.dylib"
+        make_args << "AR=libtool"
+        arflags = ldflags.join(" ") + " -dynamic -install_name #{lib}/$(notdir $@) -undefined dynamic_lookup -o"
+        make_args << "ARFLAGS=#{arflags}"
+      else
+        make_args << "LIB=.so"
+        make_args << "ARCH=ar"
+        make_args << "ARCHFLAGS=-ruv"
+      end
 
       system "make", "scotch", "VERBOSE=ON", *make_args
       system "make", "ptscotch", "VERBOSE=ON", *make_args
