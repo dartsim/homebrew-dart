@@ -156,9 +156,9 @@ class Mumps < Formula
     EOS
     if build.without? "mpi"
       s += <<~EOS
-      You built a sequential MUMPS library.
-      Please add #{libexec}/include to the include path
-      when building software that depends on MUMPS.
+        You built a sequential MUMPS library.
+        Please add #{libexec}/include to the include path
+        when building software that depends on MUMPS.
       EOS
     end
     s
