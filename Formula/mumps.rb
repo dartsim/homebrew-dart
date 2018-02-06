@@ -13,7 +13,7 @@ class Mumps < Formula
   depends_on "scalapack" if build.with? "mpi"
   depends_on "metis"    => :optional if build.without? "mpi"
   depends_on "parmetis" => :optional if build.with? "mpi"
-  depends_on "scotch5"  => :optional
+  depends_on "scotch@5" => :optional
   depends_on "scotch"   => :optional
 
   resource "mumps_simple" do
