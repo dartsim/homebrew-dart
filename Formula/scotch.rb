@@ -6,7 +6,6 @@ class Scotch < Formula
 
   option "without-test", "skip build-time tests (not recommended)"
 
-  depends_on "bzip2" unless OS.mac?
   depends_on "open-mpi"
   depends_on "xz" => :optional # Provides lzma compression.
 
@@ -37,16 +36,10 @@ class Scotch < Formula
                    "CFLAGS=#{cflags.join(" ")}",
                    "LDFLAGS=#{ldflags.join(" ")}"]
 
-      if OS.mac?
-        make_args << "LIB=.dylib"
-        make_args << "AR=libtool"
-        arflags = ldflags.join(" ") + " -dynamic -install_name #{lib}/$(notdir $@) -undefined dynamic_lookup -o"
-        make_args << "ARFLAGS=#{arflags}"
-      else
-        make_args << "LIB=.so"
-        make_args << "ARCH=ar"
-        make_args << "ARCHFLAGS=-ruv"
-      end
+      make_args << "LIB=.dylib"
+      make_args << "AR=libtool"
+      arflags = ldflags.join(" ") + " -dynamic -install_name #{lib}/$(notdir $@) -undefined dynamic_lookup -o"
+      make_args << "ARFLAGS=#{arflags}"
 
       system "make", "scotch", "VERBOSE=ON", *make_args
       system "make", "ptscotch", "VERBOSE=ON", *make_args

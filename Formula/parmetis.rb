@@ -4,14 +4,14 @@ class Parmetis < Formula
   url "http://glaros.dtc.umn.edu/gkhome/fetch/sw/parmetis/parmetis-4.0.3.tar.gz"
   sha256 "f2d9a231b7cf97f1fee6e8c9663113ebf6c240d407d3c118c55b3633d6be6e5f"
 
-  # METIS 5.* is required. It comes bundled with ParMETIS.
-  # We prefer to brew it ourselves.
+  # Prefer our metis over the bundled one
   depends_on "metis"
 
   depends_on "cmake" => :build
   depends_on "open-mpi"
 
   # Do not build the METIS 5.* that ships with ParMETIS.
+  # Ideally ParMETIS would provide a cmake flag for this
   patch :DATA
 
   # Bug fixes from PETSc developers. Mirrored because the SHA-256s get
@@ -29,7 +29,7 @@ class Parmetis < Formula
   end
 
   def install
-    ENV["LDFLAGS"] = "-L#{Formula["metis"].lib} -lmetis -lm"
+    ENV["LDFLAGS"] = "-L#{Formula["metis"].opt_lib} -lmetis -lm"
 
     system "make", "config", "prefix=#{prefix}", "shared=1"
     system "make", "install"
@@ -38,7 +38,6 @@ class Parmetis < Formula
 
   test do
     system "mpirun", "#{bin}/ptest", "#{pkgshare}/Graphs/rotor.graph"
-    ohai "Test results are in ~/Library/Logs/Homebrew/parmetis."
   end
 end
 
