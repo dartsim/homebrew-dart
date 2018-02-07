@@ -4,7 +4,7 @@ class Mumps < Formula
   url "http://mumps.enseeiht.fr/MUMPS_5.1.2.tar.gz"
   sha256 "eb345cda145da9aea01b851d17e54e7eef08e16bfa148100ac1f7f046cd42ae9"
 
-  option "without-mpi", "build with MPI"
+  option "with-mpi", "build with MPI"
 
   depends_on "open-mpi" if build.with? "mpi"
   depends_on "openblas"
@@ -13,7 +13,7 @@ class Mumps < Formula
   depends_on "scalapack" if build.with? "mpi"
   depends_on "metis"    => :optional if build.without? "mpi"
   depends_on "parmetis" => :optional if build.with? "mpi"
-  depends_on "scotch5"  => :optional
+  depends_on "scotch@5" => :optional
   depends_on "scotch"   => :optional
 
   resource "mumps_simple" do
@@ -156,9 +156,9 @@ class Mumps < Formula
     EOS
     if build.without? "mpi"
       s += <<~EOS
-      You built a sequential MUMPS library.
-      Please add #{libexec}/include to the include path
-      when building software that depends on MUMPS.
+        You built a sequential MUMPS library.
+        Please add #{libexec}/include to the include path
+        when building software that depends on MUMPS.
       EOS
     end
     s
