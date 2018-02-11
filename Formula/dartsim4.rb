@@ -23,7 +23,6 @@ class Dartsim4 < Formula
   depends_on "urdfdom" if build.without? "core-only"
 
   conflicts_with "dartsim5", :because => "Differing version of the same formula"
-  conflicts_with "dartsim6", :because => "Differing version of the same formula"
   conflicts_with "dartsim", :because => "Homebrew-core version of the same formula"
 
   def install
