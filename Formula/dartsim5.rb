@@ -15,7 +15,7 @@ class Dartsim5 < Formula
   depends_on "assimp"
   depends_on "boost"
   depends_on "eigen"
-  depends_on "dartsim/dart/fcl"
+  depends_on "fcl"
   depends_on "libccd"
 
   depends_on "bullet" => :optional
@@ -23,15 +23,19 @@ class Dartsim5 < Formula
   depends_on "flann" if build.without? "core-only"
   depends_on "tinyxml" if build.without? "core-only"
   depends_on "tinyxml2" if build.without? "core-only"
-  depends_on "ros/deps/urdfdom" if build.without? "core-only"
+  depends_on "urdfdom" if build.without? "core-only"
   depends_on "nlopt" if build.without? "core-only" => :optional
   depends_on "dartsim/dart/ipopt" if build.without? "core-only" => :optional
   depends_on "open-scene-graph" if build.without? "core-only" => :optional
 
   conflicts_with "dartsim4", :because => "Differing version of the same formula"
   conflicts_with "dartsim6", :because => "Differing version of the same formula"
+  conflicts_with "dartsim", :because => "Homebrew-core version of the same formula"
+
+  needs :cxx11
 
   def install
+    ENV.cxx11
     cmake_args = std_cmake_args
     cmake_args << "-DBUILD_CORE_ONLY=True" if build.with? "core-only"
     system "cmake", ".", *cmake_args
@@ -47,7 +51,8 @@ class Dartsim5 < Formula
         return 0;
       }
     EOS
-    system ENV.cc, "test.cpp", "-I#{include}/eigen3", "-L#{lib}", "-ldart", "-lassimp", "-lc++", "-std=c++11", "-o", "test"
+    system ENV.cxx, "test.cpp", "-I#{include}/eigen3", "-L#{lib}",
+                    "-ldart", "-lassimp", "-std=c++11", "-o", "test"
     system "./test"
   end
 end
