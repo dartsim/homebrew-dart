@@ -1,4 +1,4 @@
-class DartsimAT5 < Formula
+class Dartsim5 < Formula
   desc "DART: Dynamic Animation and Robotics Toolkit"
   homepage "https://dartsim.github.io/"
   url "https://github.com/dartsim/dart/archive/v5.1.6.tar.gz"

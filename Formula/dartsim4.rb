@@ -1,4 +1,4 @@
-class DartsimAT4 < Formula
+class Dartsim4 < Formula
   desc "DART: Dynamic Animation and Robotics Toolkit"
   homepage "https://dartsim.github.io/"
   url "https://github.com/dartsim/dart/archive/v4.3.7.tar.gz"

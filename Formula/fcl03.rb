@@ -1,4 +1,4 @@
-class FclAT03 < Formula
+class Fcl03 < Formula
   desc "Flexible Collision Library"
   homepage "http://gamma.cs.unc.edu/FCL/"
   url "https://github.com/flexible-collision-library/fcl/archive/0.3.4.tar.gz"
