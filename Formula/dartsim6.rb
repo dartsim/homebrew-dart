@@ -26,7 +26,7 @@ class Dartsim6 < Formula
   depends_on "assimp"
   depends_on "boost"
   depends_on "eigen"
-  depends_on "dartsim/dart/fcl"
+  depends_on "fcl"
   depends_on "libccd"
 
   # dart-optimizer-nlopt
@@ -50,7 +50,7 @@ class Dartsim6 < Formula
     depends_on "tinyxml2"
 
     # dart-utils-urdf
-    depends_on "ros/deps/urdfdom" if build.with? "utils-urdf"
+    depends_on "urdfdom" if build.with? "utils-urdf"
   end
 
   # dart-gui
@@ -63,8 +63,12 @@ class Dartsim6 < Formula
 
   conflicts_with "dartsim4", :because => "Differing version of the same formula"
   conflicts_with "dartsim5", :because => "Differing version of the same formula"
+  conflicts_with "dartsim", :because => "Homebrew-core version of the same formula"
+
+  needs :cxx11
 
   def install
+    ENV.cxx11
     cmake_args = std_cmake_args
     system "cmake", ".", *cmake_args
     system "make", "install"
@@ -79,7 +83,8 @@ class Dartsim6 < Formula
         return 0;
       }
     EOS
-    system ENV.cc, "test.cpp", "-I#{include}/eigen3", "-L#{lib}", "-ldart", "-lassimp", "-lc++", "-std=c++11", "-o", "test"
+    system ENV.cxx, "test.cpp", "-I#{include}/eigen3", "-L#{lib}",
+                    "-ldart", "-lassimp", "-std=c++11", "-o", "test"
     system "./test"
   end
 end
