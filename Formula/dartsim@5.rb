@@ -1,9 +1,8 @@
-class Dartsim5 < Formula
+class DartsimAT5 < Formula
   desc "DART: Dynamic Animation and Robotics Toolkit"
-  homepage "https://dartsim.github.io"
+  homepage "https://dartsim.github.io/"
   url "https://github.com/dartsim/dart/archive/v5.1.6.tar.gz"
   sha256 "b3b04a321fed0e63483413cc7a9bea780a0b97b7baacf64a574cc042f612d1e3"
-  head "https://github.com/dartsim/dart.git", :branch => "release-5.1"
 
   option "with-core-only", "Build dart-core only"
 
@@ -43,7 +42,7 @@ class Dartsim5 < Formula
   end
 
   test do
-    (testpath/"test.cpp").write <<-EOS.undent
+    (testpath/"test.cpp").write <<~EOS
       #include <dart/dart-core.h>
       int main() {
         auto world = std::make_shared<dart::simulation::World>();
@@ -51,8 +50,9 @@ class Dartsim5 < Formula
         return 0;
       }
     EOS
-    system ENV.cxx, "test.cpp", "-I#{include}/eigen3", "-L#{lib}",
-                    "-ldart", "-lassimp", "-std=c++11", "-o", "test"
+    system ENV.cxx, "test.cpp", "-I#{Formula["eigen"].include}",
+                    "-I#{include}", "-L#{lib}", "-ldart",
+                    "-lassimp", "-std=c++11", "-o", "test"
     system "./test"
   end
 end
