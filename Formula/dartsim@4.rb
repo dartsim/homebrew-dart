@@ -1,4 +1,4 @@
-class Dartsim4 < Formula
+class DartsimAT4 < Formula
   desc "DART: Dynamic Animation and Robotics Toolkit"
   homepage "https://dartsim.github.io/"
   url "https://github.com/dartsim/dart/archive/v4.3.7.tar.gz"
@@ -34,7 +34,7 @@ class Dartsim4 < Formula
   end
 
   test do
-    (testpath/"test.cpp").write <<-EOS.undent
+    (testpath/"test.cpp").write <<~EOS
       #include <dart/dart.h>
       int main() {
         dart::simulation::World* world = new dart::simulation::World();
@@ -42,8 +42,9 @@ class Dartsim4 < Formula
         return 0;
       }
     EOS
-    system ENV.cxx, "test.cpp", "-I#{include}/eigen3", "-L#{lib}",
-                    "-ldart", "-lassimp", "-o", "test"
+    system ENV.cxx, "test.cpp", "-I#{Formula["eigen"].include}",
+                    "-I#{include}", "-L#{lib}", "-ldart",
+                    "-lassimp", "-o", "test"
     system "./test"
   end
 end
