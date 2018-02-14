@@ -4,9 +4,9 @@ language: ruby
 
 matrix:
   include:
-    - env: OSX=10.12
+    - env: OSX=10.13
       os: osx
-      osx_image: xcode9.1
+      osx_image: xcode9.3beta
       rvm: system
 
 cache:
