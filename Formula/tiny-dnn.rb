@@ -10,7 +10,6 @@ class TinyDnn < Formula
   needs :cxx14
 
   def install
-    ENV.cxx14
     cmake_args = ["-DUSE_TBB=OFF", "-DUSE_AVX=OFF", "-DBUILD_TESTS=OFF"]
     system "cmake", ".", *std_cmake_args, *cmake_args
     system "make", "install"
