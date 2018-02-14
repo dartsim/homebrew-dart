@@ -1,6 +1,6 @@
 class TinyDnn < Formula
   desc "Header only, Dependency-free Deep Learning Framework in C++14"
-  homepage "http://tiny-dnn.readthedocs.io/en/latest/"
+  homepage "https://tiny-dnn.readthedocs.io/en/latest/"
   url "https://github.com/tiny-dnn/tiny-dnn/archive/v1.0.0a3.tar.gz"
   sha256 "e2c61ce8c5debaa644121179e9dbdcf83f497f39de853f8dd5175846505aa18b"
 
