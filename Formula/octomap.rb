@@ -19,7 +19,7 @@ class Octomap < Formula
       #include <octomap/octomap.h>
       int main() {
         octomap::OcTree tree(0.05);
-        assert(tree.size(), 0);
+        assert(tree.size() == 0);
         return 0;
       }
     EOS
