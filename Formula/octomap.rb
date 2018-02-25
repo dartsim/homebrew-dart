@@ -6,10 +6,9 @@ class Octomap < Formula
 
   depends_on "cmake" => :build
 
-  needs :cxx11
-
   def install
-    ENV.cxx11
+    ENV.cxx
+    system "cd octomap"
     system "cmake", ".", *std_cmake_args
     system "make", "install"
   end
@@ -25,7 +24,7 @@ class Octomap < Formula
       }
     EOS
     system ENV.cxx, "test.cpp", "-I#{include}", "-L#{lib}", 
-                    "-loctomap", "-std=c++11", "-o", "test"
+                    "-loctomath", "-loctomap", "-o", "test"
     system "./test"
   end
 end
