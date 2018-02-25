@@ -16,6 +16,7 @@ class Octomap < Formula
 
   test do
     (testpath/"test.cpp").write <<~EOS
+      #include <cassert>
       #include <octomap/octomap.h>
       int main() {
         octomap::OcTree tree(0.05);
