@@ -15,6 +15,17 @@ class Octomap < Formula
   end
 
   test do
-    "true"
+    (testpath/"test.cpp").write <<~EOS
+      #include <octomap/octomap.h>
+      int main() {
+        octomap::OcTree tree(0.05);
+        assert(tree.size(), 0);
+        return 0;
+      }
+    EOS
+    system ENV.cxx, "test.cpp", "-I#{Formula["eigen"].include}/eigen3",
+                    "-I#{include}", "-L#{lib}", "-ldart",
+                    "-lassimp", "-std=c++11", "-o", "test"
+    system "./test"
   end
 end
