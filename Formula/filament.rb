@@ -24,12 +24,10 @@ class Filament < Formula
   end
   test do
     (testpath/"test.cpp").write <<~EOS
-      #include <cassert>
       #include <filament/Engine.h>
       using namespace filament;
       int main() {
         Engine* engine = Engine::create();
-        assert(engine != nullptr);
         Engine::destroy(&engine);
         return 0;
       }
