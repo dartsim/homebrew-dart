@@ -36,7 +36,7 @@ class Filament < Formula
     EOS
     system ENV.cxx, "test.cpp",
                     "-I#{include}", "-L#{lib}", "-L#{lib}/x86_64",
-                    "-lfilament", "-lutils", "-lbluevk", "-lbluegl",
+                    "-lfilament", "-lutils", "-lbluevk",
                     "-lfilabridge", "-lfilaflat",
                     "-framework", "OpenGL", "-framework", "Cocoa",
                     "-std=c++14", "-o", "test"
