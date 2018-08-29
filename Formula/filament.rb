@@ -5,6 +5,7 @@ class Filament < Formula
   sha256 "6c07748077ee27a990dd7b027f651706fa0140ebcdef5a9ec0bae3c5c0cc6242"
   head "https://github.com/google/filament.git"
 
+  depends_on :arch => :x86_64
   depends_on "cmake" => :build
 
   needs :cxx14
@@ -34,7 +35,10 @@ class Filament < Formula
       }
     EOS
     system ENV.cxx, "test.cpp",
-                    "-I#{include}", "-L#{lib}", "-lfilament",
+                    "-I#{include}", "-L#{lib}", "-L#{lib}/x86_64",
+                    "-lfilament", "-lutils", "-lbluevk", "-lbluegl",
+                    "-lfilabridge", "-lfilaflat",
+                    "-framework", "OpenGL", "-framework", "Cocoa",
                     "-std=c++14", "-o", "test"
     system "./test"
   end
