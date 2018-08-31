@@ -10,6 +10,12 @@ class Filament < Formula
 
   needs :cxx14
 
+  patch do
+    # Install filamat, which is necessary for MeshAssimp.h
+    url "https://gist.githubusercontent.com/jslee02/33a77a2aa6bb8efde68cea024b6d05c4/raw/30c1af3fedac6c0e7633ccc7379f01f6c6897be9/filamat_install.patch"
+    sha256 "a2a4ef39b660e0c1987c2b3ab8346f525e142271aa3a0d3f3d14b068efcbd9b0"
+  end
+
   def install
     ENV.cxx11
     mkdir "brewbuild"
@@ -19,9 +25,6 @@ class Filament < Formula
     end
   end
 
-  test do
-    system "true"
-  end
   test do
     (testpath/"test.cpp").write <<~EOS
       #include <filament/Engine.h>
