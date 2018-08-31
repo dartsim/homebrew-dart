@@ -12,8 +12,8 @@ class Filament < Formula
 
   patch do
     # Install filamat, which is necessary for MeshAssimp.h
-    url "https://gist.githubusercontent.com/jslee02/33a77a2aa6bb8efde68cea024b6d05c4/raw/30c1af3fedac6c0e7633ccc7379f01f6c6897be9/filamat_install.patch"
-    sha256 "a2a4ef39b660e0c1987c2b3ab8346f525e142271aa3a0d3f3d14b068efcbd9b0"
+    url "https://gist.githubusercontent.com/jslee02/33a77a2aa6bb8efde68cea024b6d05c4/raw/ecf4a6173b8d2c569b1f0e6eb770535a9b2e85f5/filamat_install.patch"
+    sha256 "2b08d13978890e579cb51989e602548bd41734f4252386d6af40f4517bb060f8"
   end
 
   def install
