@@ -49,13 +49,12 @@ class Pagmo < Formula
 
           // 6 - Print the fitness of the best solution in each island
           for (const auto &isl : archi) {
-              std::cout << isl.get_population().champion_f()[0] << '\n';
+              std::cout << isl.get_population().champion_f()[0] << std::endl;
           }
       }
     EOS
-    system ENV.cxx, "test.cpp",
-                    "-I#{include}", "-L#{lib}",
-                    "-lpagmo", "-std=c++11", "-o", "test"
+    system ENV.cxx, "test.cpp", "-I#{Formula["eigen"].include}/eigen3",
+                    "-I#{include}", "-std=c++11", "-o", "test"
     system "./test"
   end
 end
