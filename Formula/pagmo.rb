@@ -8,12 +8,17 @@ class Pagmo < Formula
   depends_on "boost"
   depends_on "eigen"
   depends_on "nlopt"
+  depends_on "numpy"
 
   needs :cxx11
 
   def install
     ENV.cxx11
-    system "cmake", ".", "-DPAGMO_WITH_EIGEN3=ON", "-DPAGMO_WITH_NLOPT=ON",
+    system "cmake", ".", "-DPAGMO_BUILD_PAGMO=ON", "-DPAGMO_BUILD_PYGMO=OFF",
+                         "-DPAGMO_WITH_EIGEN3=ON", "-DPAGMO_WITH_NLOPT=ON",
+                         *std_cmake_args
+    system "make", "install"
+    system "cmake", ".", "-DPAGMO_BUILD_PAGMO=OFF", "-DPAGMO_BUILD_PYGMO=ON",
                          *std_cmake_args
     system "make", "install"
   end
@@ -57,5 +62,6 @@ class Pagmo < Formula
     system ENV.cxx, "test.cpp", "-I#{Formula["eigen"].include}/eigen3",
                     "-I#{include}", "-std=c++11", "-o", "test"
     system "./test"
+    system python, "-c", "import pygmo; pygmo.test.run_test_suite(1)"
   end
 end
