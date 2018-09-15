@@ -3,6 +3,7 @@ class Pagmo < Formula
   homepage "https://esa.github.io/pagmo2/"
   url "https://github.com/esa/pagmo2/archive/v2.9.tar.gz"
   sha256 "d482650e0c79a49ce0312c7e9e5722f3a1b24327e08af11daa66c59374bed3b4"
+  head "https://github.com/esa/pagmo2.git"
 
   depends_on "cmake" => :build
   depends_on "boost"
