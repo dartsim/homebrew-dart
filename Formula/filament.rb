@@ -1,8 +1,8 @@
 class Filament < Formula
   desc "Real-time physically based rendering engine"
   homepage "https://google.github.io/filament/Filament.md.html"
-  url "https://github.com/google/filament/archive/775c53f62c37284418ad7f4ada83934501536d95.tar.gz"
-  sha256 "6241e7cd6f5bce2e17323eeb3d8239f55bf870c40459dd738fc9b572f26bea8f"
+  url "https://github.com/google/filament/archive/v1.0.0.tar.gz"
+  sha256 "6364dc07ac240dad5bb28f7d6978c6147a7cfb3131313dba62019c0a2669539e"
   head "https://github.com/google/filament.git"
 
   depends_on :arch => :x86_64
