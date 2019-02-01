@@ -8,8 +8,6 @@ class Filament < Formula
   depends_on :arch => :x86_64
   depends_on "cmake" => :build
 
-  needs :cxx14
-
   patch do
     # Install filamat, which is necessary for MeshAssimp.h
     url "https://gist.githubusercontent.com/jslee02/33a77a2aa6bb8efde68cea024b6d05c4/raw/ecf4a6173b8d2c569b1f0e6eb770535a9b2e85f5/filamat_install.patch"

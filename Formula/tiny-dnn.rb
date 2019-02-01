@@ -8,8 +8,6 @@ class TinyDnn < Formula
   depends_on "cmake" => :build
   depends_on "cereal"
 
-  needs :cxx14
-
   def install
     cmake_args = ["-DUSE_TBB=OFF", "-DUSE_AVX=OFF", "-DBUILD_TESTS=OFF",
                   "-DDNN_USE_IMAGE_API=OFF"]
