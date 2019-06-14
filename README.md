@@ -1,6 +1,6 @@
 # homebrew-dart
 
-[![Build Status](https://travis-ci.org/dartsim/homebrew-dart.svg?branch=master)](https://travis-ci.org/dartsim/homebrew-dart) [![Build Status](https://dev.azure.com/dartsim/homebrew-dart/_apis/build/status/dartsim.homebrew-dart?branchName=master)](https://dev.azure.com/dartsim/homebrew-dart/_build/latest?definitionId=3&branchName=master)
+[![Build Status](https://dev.azure.com/dartsim/homebrew-dart/_apis/build/status/dartsim.homebrew-dart?branchName=master)](https://dev.azure.com/dartsim/homebrew-dart/_build/latest?definitionId=3&branchName=master)
 
 [Homebrew][homebrew] [tap][homebrew-tap] for [DART][dart] and its dependencies.
 

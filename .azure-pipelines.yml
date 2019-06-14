@@ -30,7 +30,7 @@ steps:
     mkdir -p $(dirname "$tap")
     sudo ln -s "$PWD" "$tap"
     brew cask install xquartz
-    brew test-bot --fast
+    brew test-bot
   displayName: 'Run brew test-bot'
   env:
     HOMEBREW_NO_ANALYTICS: 1
