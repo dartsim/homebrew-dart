@@ -7,6 +7,7 @@ class Dartpy < Formula
 
   depends_on "cmake" => :build
   depends_on "pkg-config" => :build
+  depends_on "pybind11" => :build
   depends_on "assimp"
   depends_on "boost"
   depends_on "bullet"
@@ -23,11 +24,12 @@ class Dartpy < Formula
 
   def install
     ENV.cxx11
-
-    # Force to link to system GLUT (see: https://cmake.org/Bug/view.php?id=16045)
-    system "cmake", ".", "-DGLUT_glut_LIBRARY=/System/Library/Frameworks/GLUT.framework",
-                         "-DDART_BUILD_DARTPY", *std_cmake_args
-    system "make", "dartpy", "install"
+    mkdir "build" do
+      # Force to link to system GLUT (see: https://cmake.org/Bug/view.php?id=16045)
+      system "cmake", "..", "-DGLUT_glut_LIBRARY=/System/Library/Frameworks/GLUT.framework",
+                           "-DDART_BUILD_DARTPY=ON", *std_cmake_args
+      system "make", "dartpy", "install"
+    end
   end
 
   test do
