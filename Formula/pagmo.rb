@@ -11,8 +11,6 @@ class Pagmo < Formula
   depends_on "nlopt"
   depends_on "numpy"
 
-  needs :cxx11
-
   def install
     ENV.cxx11
     system "cmake", ".", "-DPAGMO_BUILD_PAGMO=ON", "-DPAGMO_BUILD_PYGMO=OFF",

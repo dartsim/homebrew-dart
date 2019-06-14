@@ -30,8 +30,6 @@ class Dartsim5 < Formula
   conflicts_with "dartsim4", :because => "Differing version of the same formula"
   conflicts_with "dartsim", :because => "Homebrew-core version of the same formula"
 
-  needs :cxx11
-
   def install
     ENV.cxx11
     cmake_args = std_cmake_args
