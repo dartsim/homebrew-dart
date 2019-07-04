@@ -5,8 +5,8 @@ class Filament < Formula
   sha256 "a12b704368fcf99cfd97354fc7436365d19dc76b05525f0cd9fb5574b65ccb27"
   head "https://github.com/google/filament.git"
 
-  depends_on :arch => :x86_64
   depends_on "cmake" => :build
+  depends_on :arch => :x86_64
 
   def install
     ENV.cxx11
@@ -30,7 +30,8 @@ class Filament < Formula
                     "-I#{include}", "-L#{lib}", "-L#{lib}/x86_64",
                     "-lfilament", "-lutils", "-lbluevk", "-lbluegl",
                     "-lfilabridge", "-lfilaflat", "-lsmol-v",
-                    "-framework", "OpenGL", "-framework", "Cocoa",
+                    "-libl", "-lbackend", "-lgeometry",
+                    "OpenGL", "-framework", "Cocoa",
                     "-std=c++14", "-o", "test"
     system "./test"
   end
