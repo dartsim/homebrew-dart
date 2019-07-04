@@ -29,7 +29,7 @@ class Filament < Formula
     system ENV.cxx, "test.cpp",
                     "-I#{include}", "-L#{lib}", "-L#{lib}/x86_64",
                     "-lfilament", "-lutils", "-lbluevk", "-lbluegl",
-                    "-lfilabridge", "-lfilaflat",
+                    "-lfilabridge", "-lfilaflat", "-lsmol-v",
                     "-framework", "OpenGL", "-framework", "Cocoa",
                     "-std=c++14", "-o", "test"
     system "./test"
